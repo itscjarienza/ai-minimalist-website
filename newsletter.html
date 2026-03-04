@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newsletter — The AI Minimalist</title>
+  <meta name="description" content="One idea. Every two weeks. Framework teaching and real stories from the field. The AI Minimalist newsletter." />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="newsletter-body">
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="The AI Minimalist — Home">
+    <svg width="60" height="36" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+      <line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
+      <line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
+      <line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
+      <circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/>
+      <circle cx="108" cy="36" r="3" fill="#242424"/>
+    </svg>
+    <span class="nav-wordmark">The AI Minimalist</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="about.html">About</a></li>
+    <li><a href="methodology.html">Methodology</a></li>
+    <li><a href="philosophy.html">Philosophy</a></li>
+    <li><a href="work-with-me.html">Work With Me</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="nav-overlay" role="dialog" aria-label="Navigation menu">
+  <button class="nav-overlay-close" aria-label="Close menu">Close</button>
+  <a href="about.html">About</a>
+  <a href="methodology.html">Methodology</a>
+  <a href="philosophy.html">Philosophy</a>
+  <a href="work-with-me.html">Work With Me</a>
+  <a href="newsletter.html">Newsletter</a>
+</div>
+
+<!-- NEWSLETTER PAGE -->
+<main class="newsletter-page" aria-labelledby="newsletter-page-headline">
+
+  <!-- Centered Convergence Mark -->
+  <div class="newsletter-mark" aria-hidden="true">
+    <svg width="80" height="48" viewBox="0 0 120 72" fill="none">
+      <line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+      <line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+      <line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+      <circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/>
+      <circle cx="108" cy="36" r="3" fill="#ede2c7"/>
+    </svg>
+  </div>
+
+  <span class="section-label" style="color:var(--warm-cream); opacity:0.5; margin-bottom:24px;">The AI Minimalist</span>
+
+  <h1 class="t-display" id="newsletter-page-headline" style="color:var(--warm-cream); margin-bottom:32px;">One idea. Every two weeks.</h1>
+
+  <p class="t-body" style="color:var(--warm-cream); opacity:0.7; max-width:480px; text-align:center; margin-bottom:8px;">The AI Minimalist newsletter. Framework teaching and real stories from the field. Not a content digest — one focused insight per send. The kind of email that makes you think, not scroll.</p>
+
+  <p class="t-body" style="color:var(--warm-cream); opacity:0.7; max-width:480px; text-align:center; margin-bottom:0;">If you checked more than 3 items on the waste audit, this is where you start.</p>
+
+  <!-- What you'll get -->
+  <ul class="newsletter-list" aria-label="What you'll get">
+    <li>
+      <!-- Cleared icon — warm cream -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" flex-shrink="0" aria-hidden="true" style="min-width:20px; margin-top:3px;">
+        <circle cx="12" cy="12" r="8" stroke="#ede2c7" stroke-width="1" fill="none"/>
+        <line x1="8" y1="12" x2="11" y2="15" stroke="#ede2c7" stroke-width="1"/>
+        <line x1="11" y1="15" x2="16" y2="9" stroke="#ede2c7" stroke-width="1"/>
+      </svg>
+      One core AI systems idea per email
+    </li>
+    <li>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="min-width:20px; margin-top:3px;">
+        <circle cx="12" cy="12" r="8" stroke="#ede2c7" stroke-width="1" fill="none"/>
+        <line x1="8" y1="12" x2="11" y2="15" stroke="#ede2c7" stroke-width="1"/>
+        <line x1="11" y1="15" x2="16" y2="9" stroke="#ede2c7" stroke-width="1"/>
+      </svg>
+      Real examples from the field — not theory
+    </li>
+    <li>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="min-width:20px; margin-top:3px;">
+        <circle cx="12" cy="12" r="8" stroke="#ede2c7" stroke-width="1" fill="none"/>
+        <line x1="8" y1="12" x2="11" y2="15" stroke="#ede2c7" stroke-width="1"/>
+        <line x1="11" y1="15" x2="16" y2="9" stroke="#ede2c7" stroke-width="1"/>
+      </svg>
+      Occasional early access to new resources and the audit
+    </li>
+  </ul>
+
+  <!-- Email form -->
+  <div class="newsletter-form-wrap">
+    <div id="newsletter-page-form" data-form="newsletter-page">
+      <form data-form="newsletter-page">
+        <div class="newsletter-form-row">
+          <input
+            type="email"
+            class="form-input form-input-dark"
+            style="border-right: 1px solid var(--warm-cream); width:100%; max-width:100%; margin-bottom:0;"
+            placeholder="your@email.com"
+            required
+            aria-label="Email address"
+          />
+          <button type="submit" class="btn btn-cream" style="width:100%; margin-top:0;">Join the Newsletter</button>
+        </div>
+        <p class="form-sub form-sub-light" style="text-align:center; margin-top:16px;">Bi-weekly. Unsubscribe anytime. No pitch sequences.</p>
+      </form>
+    </div>
+    <div id="newsletter-page-confirm" class="form-confirm" style="color:var(--warm-cream); text-align:center;">
+      <p class="t-body">You're in. First issue coming soon.</p>
+      <p class="form-sub form-sub-light" style="margin-top:8px;">You don't need 12 AI subscriptions. You need one clear map of where the waste actually is.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg width="40" height="24" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+        <line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+        <line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+        <line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+        <circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/>
+        <circle cx="108" cy="36" r="3" fill="#ede2c7"/>
+      </svg>
+      <span class="footer-wordmark">The AI Minimalist</span>
+    </div>
+    <ul class="footer-nav" role="list">
+      <li><a href="about.html">About</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
+      <li><a href="philosophy.html">Philosophy</a></li>
+      <li><a href="work-with-me.html">Work With Me</a></li>
+      <li><a href="newsletter.html">Newsletter</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 The AI Minimalist</p>
+  </div>
+</footer>
+
+<script src="components.js"></script>
+</body>
+</html>

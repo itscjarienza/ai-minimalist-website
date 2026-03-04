@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The AI Minimalist — Icons & Illustrations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream-yellow: #f0f8be;
+      --light-grey: #ededed;
+      --warm-cream: #ede2c7;
+      --mid-grey: #5b5b5b;
+      --dark: #242424;
+      --font-heading: 'Fraunces', serif;
+      --font-body: 'Epilogue', sans-serif;
+    }
+    body {
+      background: var(--warm-cream);
+      color: var(--dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+    }
+    .page { max-width: 960px; margin: 0 auto; padding: 80px 40px; }
+
+    .page-header {
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--dark);
+      margin-bottom: 80px;
+    }
+    .page-header p {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid-grey);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 36px;
+    }
+
+    .section { margin-bottom: 96px; }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid-grey);
+      font-weight: 500;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(91,91,91,0.25);
+      margin-bottom: 48px;
+    }
+    .section-concept {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid-grey);
+      margin-bottom: 40px;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    /* ── ICON ROW ── */
+    .icon-row {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+    .icon-card {
+      flex: 1;
+      padding: 40px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .icon-label {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-top: 20px;
+      opacity: 0.4;
+      text-align: center;
+    }
+    .icon-name {
+      font-size: 11px;
+      font-weight: 300;
+      margin-top: 5px;
+      opacity: 0.6;
+      text-align: center;
+    }
+
+    /* ── ILLUSTRATION CARD ── */
+    .illo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .illo-card {
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      gap: 0;
+    }
+    .illo-label {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-top: 28px;
+      opacity: 0.4;
+      text-align: center;
+    }
+    .illo-desc {
+      font-size: 11px;
+      font-weight: 300;
+      margin-top: 6px;
+      opacity: 0.55;
+      text-align: center;
+      line-height: 1.55;
+      max-width: 200px;
+    }
+
+    .bg-warm   { background: var(--warm-cream); }
+    .bg-yellow { background: var(--cream-yellow); }
+    .bg-light  { background: var(--light-grey); }
+    .bg-dark   { background: var(--dark); }
+
+    /* ── STYLE SPEC ── */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      padding: 48px;
+      background: var(--light-grey);
+    }
+    .spec-item { }
+    .spec-title {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .spec-value {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--mid-grey);
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 48px 0 24px;
+      border-top: 1px solid var(--dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 80px;
+    }
+    footer .wm { font-family: var(--font-heading); font-weight: 400; font-size: 18px; }
+    footer .ver { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-grey); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <p>Icons & Illustration System</p>
+    <h1>The AI Minimalist — Visual Language</h1>
+  </div>
+
+  <!-- STYLE SPEC -->
+  <div class="section">
+    <div class="section-label">00 — Style Specification</div>
+    <div class="spec-grid">
+      <div class="spec-item">
+        <div class="spec-title">Stroke Weight</div>
+        <div class="spec-value">1px for icons<br>0.9–1.25px for illustrations<br>Never exceed 1.5px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-title">Line Cap</div>
+        <div class="spec-value">Round caps on open paths<br>Square on structural lines<br>Consistent per composition</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-title">Fill</div>
+        <div class="spec-value">Nodes only — small filled circles<br>No filled shapes in icons<br>Opacity for depth: 30–60%</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-title">Grid</div>
+        <div class="spec-value">24×24px icon grid<br>Illustrations: flexible<br>Always square viewBox</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-title">Radius</div>
+        <div class="spec-value">Zero. No rounded corners.<br>Circles for nodes only.<br>Everything else is line + angle.</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-title">Color</div>
+        <div class="spec-value">#242424 on light<br>#ede2c7 on dark<br>Opacity for secondary elements</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT 1: SIMPLICITY VS COMPLEXITY -->
+  <div class="section">
+    <div class="section-label">01 — Simplicity vs Complexity</div>
+    <div class="section-concept">From noise to signal.</div>
+    <div class="section-desc">Complexity is the default. Simplicity is the work. These icons and illustrations represent the before and after — the transformation that is the core of the brand.</div>
+
+    <!-- Icons -->
+    <div class="icon-row">
+      <div class="icon-card bg-light">
+        <!-- Complexity: tangled lines -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="2" y1="6" x2="22" y2="18" stroke="#242424" stroke-width="1"/>
+          <line x1="2" y1="12" x2="10" y2="6" stroke="#242424" stroke-width="1"/>
+          <line x1="10" y1="6" x2="22" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="2" y1="18" x2="14" y2="10" stroke="#242424" stroke-width="1"/>
+          <line x1="14" y1="10" x2="22" y2="14" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Complexity</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Arrow: before to after -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="2" y1="12" x2="20" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="14" y1="7" x2="20" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="14" y1="17" x2="20" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Transform</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Simplicity: single line + node -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="2" y1="12" x2="17" y2="12" stroke="#242424" stroke-width="1"/>
+          <circle cx="20" cy="12" r="2.5" fill="#242424"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Simplicity</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Compression: 3 lines to 1 -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="2" y1="7" x2="22" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="2" y1="12" x2="22" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="2" y1="17" x2="22" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Convergence</div>
+      </div>
+    </div>
+
+    <!-- Illustration -->
+    <div class="illo-grid">
+      <div class="illo-card bg-dark">
+        <!-- Before: tangled system -->
+        <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Chaotic lines -->
+          <line x1="10" y1="20" x2="150" y2="100" stroke="#ede2c7" stroke-width="0.9" opacity="0.5"/>
+          <line x1="10" y1="40" x2="80" y2="15" stroke="#ede2c7" stroke-width="0.9" opacity="0.5"/>
+          <line x1="80" y1="15" x2="150" y2="60" stroke="#ede2c7" stroke-width="0.9" opacity="0.5"/>
+          <line x1="10" y1="60" x2="100" y2="30" stroke="#ede2c7" stroke-width="0.9" opacity="0.4"/>
+          <line x1="100" y1="30" x2="150" y2="80" stroke="#ede2c7" stroke-width="0.9" opacity="0.4"/>
+          <line x1="10" y1="80" x2="120" y2="50" stroke="#ede2c7" stroke-width="0.9" opacity="0.3"/>
+          <line x1="30" y1="100" x2="150" y2="40" stroke="#ede2c7" stroke-width="0.9" opacity="0.3"/>
+          <!-- Scattered nodes -->
+          <circle cx="10" cy="20" r="2" fill="#ede2c7" opacity="0.4"/>
+          <circle cx="80" cy="15" r="2" fill="#ede2c7" opacity="0.4"/>
+          <circle cx="150" cy="60" r="2" fill="#ede2c7" opacity="0.4"/>
+          <circle cx="30" cy="100" r="2" fill="#ede2c7" opacity="0.4"/>
+          <circle cx="120" cy="50" r="2" fill="#ede2c7" opacity="0.4"/>
+          <!-- Label -->
+          <text x="80" y="113" text-anchor="middle" font-family="'Epilogue', sans-serif" font-weight="300" font-size="8" fill="#ede2c7" opacity="0.35" letter-spacing="2">BEFORE</text>
+        </svg>
+        <div class="illo-label" style="color:var(--warm-cream);">The Complexity State</div>
+        <div class="illo-desc" style="color:var(--warm-cream);">Too many tools. No clear flow. Noise everywhere.</div>
+      </div>
+      <div class="illo-card bg-yellow">
+        <!-- After: clean convergence -->
+        <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Three clean lines converging -->
+          <line x1="10" y1="30" x2="128" y2="60" stroke="#242424" stroke-width="0.9"/>
+          <line x1="10" y1="60" x2="128" y2="60" stroke="#242424" stroke-width="0.9"/>
+          <line x1="10" y1="90" x2="128" y2="60" stroke="#242424" stroke-width="0.9"/>
+          <!-- Destination node -->
+          <circle cx="140" cy="60" r="9" stroke="#242424" stroke-width="1" fill="none"/>
+          <circle cx="140" cy="60" r="3.5" fill="#242424"/>
+          <!-- Label -->
+          <text x="80" y="113" text-anchor="middle" font-family="'Epilogue', sans-serif" font-weight="300" font-size="8" fill="#242424" opacity="0.4" letter-spacing="2">AFTER</text>
+        </svg>
+        <div class="illo-label">The Minimal State</div>
+        <div class="illo-desc">Three inputs. One clear output. The system works.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT 2: PROCESS MAPPING / FLOW -->
+  <div class="section">
+    <div class="section-label">02 — Process Mapping / Flow</div>
+    <div class="section-concept">Map what goes in. Map what comes out.</div>
+    <div class="section-desc">The industrial engineering lens. Before you build anything, you understand the flow. These icons represent the mapping methodology.</div>
+
+    <!-- Icons -->
+    <div class="icon-row">
+      <div class="icon-card bg-light">
+        <!-- Input node -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="4" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="2" y1="12" x2="8" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Input</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Process: box with arrow through -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="7" y="7" width="10" height="10" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="2" y1="12" x2="7" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="17" y1="12" x2="22" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Process</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Output node — filled -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="4" fill="#242424"/>
+          <line x1="16" y1="12" x2="22" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Output</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Branch: one in, two out -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="2" y1="12" x2="10" y2="12" stroke="#242424" stroke-width="1"/>
+          <circle cx="10" cy="12" r="1.5" fill="#242424"/>
+          <line x1="10" y1="12" x2="22" y2="7" stroke="#242424" stroke-width="1"/>
+          <line x1="10" y1="12" x2="22" y2="17" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Branch</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Loop / cycle -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M 6 8 A 7 7 0 1 1 18 16" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="18" y1="12" x2="18" y2="18" stroke="#242424" stroke-width="1"/>
+          <line x1="14" y1="18" x2="18" y2="18" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Loop</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Waste: dead end line -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="2" y1="12" x2="16" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="16" y1="8" x2="16" y2="16" stroke="#242424" stroke-width="1"/>
+          <line x1="19" y1="8" x2="22" y2="12" stroke="#242424" stroke-width="1" opacity="0.3"/>
+          <line x1="19" y1="16" x2="22" y2="12" stroke="#242424" stroke-width="1" opacity="0.3"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Dead End</div>
+      </div>
+    </div>
+
+    <!-- Illustration: full process map -->
+    <div class="illo-grid">
+      <div class="illo-card bg-warm" style="align-items:flex-start; padding: 48px;">
+        <svg width="100%" height="180" viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stage 1: Input -->
+          <circle cx="20" cy="90" r="8" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="28" y1="90" x2="58" y2="90" stroke="#242424" stroke-width="0.9"/>
+          <!-- Stage 2: Map -->
+          <rect x="58" y="76" width="28" height="28" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="86" y1="90" x2="116" y2="90" stroke="#242424" stroke-width="0.9"/>
+          <!-- Stage 3: Find waste — branch -->
+          <circle cx="120" cy="90" r="4" fill="#242424"/>
+          <line x1="124" y1="90" x2="154" y2="72" stroke="#242424" stroke-width="0.9"/>
+          <line x1="124" y1="90" x2="154" y2="108" stroke="#242424" stroke-width="0.9"/>
+          <!-- Branch A: waste (dead end) -->
+          <line x1="154" y1="72" x2="184" y2="72" stroke="#242424" stroke-width="0.9" opacity="0.35"/>
+          <line x1="184" y1="66" x2="184" y2="78" stroke="#242424" stroke-width="0.9" opacity="0.35"/>
+          <text x="190" y="76" font-family="'Epilogue', sans-serif" font-size="8" fill="#242424" opacity="0.3" font-weight="300">waste</text>
+          <!-- Branch B: keep -->
+          <line x1="154" y1="108" x2="184" y2="108" stroke="#242424" stroke-width="0.9"/>
+          <circle cx="184" cy="108" r="3" fill="#242424"/>
+          <line x1="187" y1="108" x2="220" y2="90" stroke="#242424" stroke-width="0.9"/>
+          <!-- Stage 4: Build -->
+          <rect x="220" y="76" width="28" height="28" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="248" y1="90" x2="272" y2="90" stroke="#242424" stroke-width="0.9"/>
+          <!-- Output -->
+          <circle cx="278" cy="90" r="6" stroke="#242424" stroke-width="1" fill="none"/>
+          <circle cx="278" cy="90" r="2.5" fill="#242424"/>
+          <!-- Labels -->
+          <text x="20" y="108" text-anchor="middle" font-family="'Epilogue', sans-serif" font-size="7" fill="#242424" opacity="0.4" font-weight="300">input</text>
+          <text x="72" y="116" text-anchor="middle" font-family="'Epilogue', sans-serif" font-size="7" fill="#242424" opacity="0.4" font-weight="300">map</text>
+          <text x="120" y="108" text-anchor="middle" font-family="'Epilogue', sans-serif" font-size="7" fill="#242424" opacity="0.4" font-weight="300">audit</text>
+          <text x="234" y="116" text-anchor="middle" font-family="'Epilogue', sans-serif" font-size="7" fill="#242424" opacity="0.4" font-weight="300">build</text>
+          <text x="278" y="108" text-anchor="middle" font-family="'Epilogue', sans-serif" font-size="7" fill="#242424" opacity="0.4" font-weight="300">output</text>
+        </svg>
+        <div class="illo-label" style="align-self:center;">The Process Map</div>
+        <div class="illo-desc" style="align-self:center;">Input → Map → Audit → Build → Output. Waste eliminated in the branch.</div>
+      </div>
+
+      <div class="illo-card bg-dark">
+        <!-- Vertical flow -->
+        <svg width="60" height="180" viewBox="0 0 60 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Step 1 -->
+          <circle cx="30" cy="12" r="7" stroke="#ede2c7" stroke-width="1" fill="none"/>
+          <line x1="30" y1="19" x2="30" y2="42" stroke="#ede2c7" stroke-width="0.9"/>
+          <!-- Step 2 -->
+          <rect x="18" y="42" width="24" height="24" stroke="#ede2c7" stroke-width="1" fill="none"/>
+          <line x1="30" y1="66" x2="30" y2="90" stroke="#ede2c7" stroke-width="0.9"/>
+          <!-- Step 3 — diamond: decision -->
+          <polygon points="30,90 44,104 30,118 16,104" stroke="#ede2c7" stroke-width="1" fill="none"/>
+          <line x1="30" y1="118" x2="30" y2="142" stroke="#ede2c7" stroke-width="0.9"/>
+          <!-- Step 4 -->
+          <rect x="18" y="142" width="24" height="24" stroke="#ede2c7" stroke-width="1" fill="none"/>
+          <line x1="30" y1="166" x2="30" y2="176" stroke="#ede2c7" stroke-width="0.9"/>
+          <circle cx="30" cy="178" r="2" fill="#ede2c7"/>
+          <!-- Labels -->
+          <text x="46" y="16" font-family="'Epilogue', sans-serif" font-size="7" fill="#ede2c7" opacity="0.4" font-weight="300">map</text>
+          <text x="46" y="58" font-family="'Epilogue', sans-serif" font-size="7" fill="#ede2c7" opacity="0.4" font-weight="300">find</text>
+          <text x="46" y="108" font-family="'Epilogue', sans-serif" font-size="7" fill="#ede2c7" opacity="0.4" font-weight="300">decide</text>
+          <text x="46" y="158" font-family="'Epilogue', sans-serif" font-size="7" fill="#ede2c7" opacity="0.4" font-weight="300">build</text>
+        </svg>
+        <div class="illo-label" style="color:var(--warm-cream);">Vertical Flow</div>
+        <div class="illo-desc" style="color:var(--warm-cream);">The four-stage methodology. Top down. No shortcuts.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT 3: THE AUDIT / DIAGNOSTIC -->
+  <div class="section">
+    <div class="section-label">03 — The Audit / Diagnostic</div>
+    <div class="section-concept">Find where the waste lives.</div>
+    <div class="section-desc">The audit is the product. These icons represent the diagnostic lens — the moment of clarity before the build.</div>
+
+    <div class="icon-row">
+      <div class="icon-card bg-light">
+        <!-- Magnifier: audit lens -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="10" cy="10" r="6" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="15" y1="15" x2="22" y2="22" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Audit Lens</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Crosshair: diagnostic target -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="6" stroke="#242424" stroke-width="1" fill="none"/>
+          <circle cx="12" cy="12" r="1.5" fill="#242424"/>
+          <line x1="12" y1="2" x2="12" y2="6" stroke="#242424" stroke-width="1"/>
+          <line x1="12" y1="18" x2="12" y2="22" stroke="#242424" stroke-width="1"/>
+          <line x1="2" y1="12" x2="6" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="18" y1="12" x2="22" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Diagnostic</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Checkmark in circle: validated -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="8" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="8" y1="12" x2="11" y2="15" stroke="#242424" stroke-width="1"/>
+          <line x1="11" y1="15" x2="16" y2="9" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Validated</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Flag: identified issue -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="6" y1="4" x2="6" y2="22" stroke="#242424" stroke-width="1"/>
+          <line x1="6" y1="4" x2="18" y2="4" stroke="#242424" stroke-width="1"/>
+          <line x1="18" y1="4" x2="18" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="18" y1="12" x2="6" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Flag</div>
+      </div>
+    </div>
+
+    <!-- Illustration: the audit moment -->
+    <div class="illo-grid">
+      <div class="illo-card bg-yellow">
+        <svg width="160" height="140" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- System being examined -->
+          <circle cx="48" cy="70" r="8" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="56" y1="70" x2="72" y2="70" stroke="#242424" stroke-width="0.9"/>
+          <rect x="72" y="60" width="20" height="20" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="92" y1="70" x2="108" y2="70" stroke="#242424" stroke-width="0.9"/>
+          <circle cx="112" cy="70" r="5" stroke="#242424" stroke-width="1" fill="none"/>
+          <circle cx="112" cy="70" r="2" fill="#242424"/>
+          <!-- Audit lens over the process box -->
+          <circle cx="82" cy="70" r="22" stroke="#242424" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity="0.5"/>
+          <line x1="98" y1="86" x2="112" y2="100" stroke="#242424" stroke-width="1" opacity="0.5"/>
+          <!-- Diagnostic marker -->
+          <line x1="72" y1="50" x2="82" y2="60" stroke="#242424" stroke-width="0.9" opacity="0.6"/>
+          <circle cx="70" cy="48" r="3" stroke="#242424" stroke-width="1" fill="none" opacity="0.6"/>
+        </svg>
+        <div class="illo-label">The Audit Moment</div>
+        <div class="illo-desc">The lens finds where the process breaks. That's where the work starts.</div>
+      </div>
+      <div class="illo-card bg-warm">
+        <!-- Before/after audit checklist feel -->
+        <svg width="140" height="160" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Document frame -->
+          <rect x="20" y="10" width="100" height="140" stroke="#242424" stroke-width="1" fill="none"/>
+          <!-- Lines = checklist items -->
+          <line x1="36" y1="36" x2="104" y2="36" stroke="#242424" stroke-width="0.75" opacity="0.3"/>
+          <circle cx="30" cy="36" r="3" stroke="#242424" stroke-width="0.9" fill="none"/>
+          <line x1="28" y1="36" x2="30" y2="38" stroke="#242424" stroke-width="0.9"/>
+          <line x1="30" y1="38" x2="33" y2="33" stroke="#242424" stroke-width="0.9"/>
+
+          <line x1="36" y1="56" x2="104" y2="56" stroke="#242424" stroke-width="0.75" opacity="0.3"/>
+          <circle cx="30" cy="56" r="3" stroke="#242424" stroke-width="0.9" fill="none"/>
+          <line x1="28" y1="56" x2="30" y2="58" stroke="#242424" stroke-width="0.9"/>
+          <line x1="30" y1="58" x2="33" y2="53" stroke="#242424" stroke-width="0.9"/>
+
+          <line x1="36" y1="76" x2="104" y2="76" stroke="#242424" stroke-width="0.75" opacity="0.3"/>
+          <circle cx="30" cy="76" r="3" stroke="#242424" stroke-width="0.9" fill="none"/>
+
+          <line x1="36" y1="96" x2="104" y2="96" stroke="#242424" stroke-width="0.75" opacity="0.3"/>
+          <circle cx="30" cy="96" r="3" stroke="#242424" stroke-width="0.9" fill="none"/>
+
+          <line x1="36" y1="116" x2="80" y2="116" stroke="#242424" stroke-width="0.75" opacity="0.3"/>
+          <circle cx="30" cy="116" r="3" stroke="#242424" stroke-width="0.9" fill="none"/>
+
+          <!-- Title line -->
+          <line x1="36" y1="22" x2="90" y2="22" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="illo-label">The Diagnostic Doc</div>
+        <div class="illo-desc">5-question audit. Two confirmed. Three still open. The work in progress.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT 4: AI AS A COMPONENT -->
+  <div class="section">
+    <div class="section-label">04 — AI As A Component (Not The Answer)</div>
+    <div class="section-concept">AI earns its place. It doesn't replace the system.</div>
+    <div class="section-desc">The core contrarian belief. AI is one node in the flow — not the whole flow. These icons represent that positioning.</div>
+
+    <div class="icon-row">
+      <div class="icon-card bg-light">
+        <!-- AI node: hollow circle with spark inside -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="7" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="12" y1="8" x2="12" y2="11" stroke="#242424" stroke-width="1"/>
+          <line x1="12" y1="13" x2="12" y2="16" stroke="#242424" stroke-width="1"/>
+          <line x1="8" y1="12" x2="11" y2="12" stroke="#242424" stroke-width="1"/>
+          <line x1="13" y1="12" x2="16" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">AI Node</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Component: plugged in -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="7" y="8" width="10" height="8" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="10" y1="8" x2="10" y2="5" stroke="#242424" stroke-width="1"/>
+          <line x1="14" y1="8" x2="14" y2="5" stroke="#242424" stroke-width="1"/>
+          <line x1="12" y1="16" x2="12" y2="20" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Component</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Not the answer: X mark -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="8" stroke="#242424" stroke-width="1" fill="none" opacity="0.4"/>
+          <line x1="8" y1="8" x2="16" y2="16" stroke="#242424" stroke-width="1"/>
+          <line x1="16" y1="8" x2="8" y2="16" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Not The Answer</div>
+      </div>
+      <div class="icon-card bg-light">
+        <!-- Placed correctly: node in system -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="2" y1="12" x2="7" y2="12" stroke="#242424" stroke-width="1"/>
+          <circle cx="12" cy="12" r="5" stroke="#242424" stroke-width="1" fill="none"/>
+          <circle cx="12" cy="12" r="1.5" fill="#242424"/>
+          <line x1="17" y1="12" x2="22" y2="12" stroke="#242424" stroke-width="1"/>
+        </svg>
+        <div class="icon-label">24px</div>
+        <div class="icon-name">Placed Right</div>
+      </div>
+    </div>
+
+    <!-- Illustration -->
+    <div class="illo-grid">
+      <div class="illo-card bg-dark">
+        <!-- Wrong: AI as entire system -->
+        <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Giant AI circle consuming everything -->
+          <circle cx="80" cy="60" r="44" stroke="#ede2c7" stroke-width="1" fill="none" opacity="0.25"/>
+          <circle cx="80" cy="60" r="30" stroke="#ede2c7" stroke-width="1" fill="none" opacity="0.2"/>
+          <circle cx="80" cy="60" r="16" stroke="#ede2c7" stroke-width="1" fill="none" opacity="0.3"/>
+          <!-- AI label -->
+          <text x="80" y="64" text-anchor="middle" font-family="'Epilogue', sans-serif" font-weight="300" font-size="9" fill="#ede2c7" opacity="0.5" letter-spacing="2">AI</text>
+          <!-- Small input buried -->
+          <circle cx="20" cy="60" r="4" fill="#ede2c7" opacity="0.3"/>
+          <line x1="24" y1="60" x2="36" y2="60" stroke="#ede2c7" stroke-width="0.75" opacity="0.3"/>
+          <!-- Small output buried -->
+          <circle cx="140" cy="60" r="4" fill="#ede2c7" opacity="0.3"/>
+          <line x1="124" y1="60" x2="136" y2="60" stroke="#ede2c7" stroke-width="0.75" opacity="0.3"/>
+          <!-- Label -->
+          <text x="80" y="115" text-anchor="middle" font-family="'Epilogue', sans-serif" font-size="8" fill="#ede2c7" opacity="0.3" font-weight="300" letter-spacing="2">WRONG</text>
+        </svg>
+        <div class="illo-label" style="color:var(--warm-cream);">AI As The Answer</div>
+        <div class="illo-desc" style="color:var(--warm-cream);">AI consuming the whole system. The mistake most founders make.</div>
+      </div>
+      <div class="illo-card bg-warm">
+        <!-- Right: AI as one node in the flow -->
+        <svg width="200" height="80" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Input -->
+          <circle cx="14" cy="40" r="6" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="20" y1="40" x2="42" y2="40" stroke="#242424" stroke-width="0.9"/>
+          <!-- Process 1 -->
+          <rect x="42" y="30" width="20" height="20" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="62" y1="40" x2="84" y2="40" stroke="#242424" stroke-width="0.9"/>
+          <!-- AI Node — distinctly marked -->
+          <circle cx="94" cy="40" r="10" stroke="#242424" stroke-width="1" fill="none"/>
+          <text x="94" y="44" text-anchor="middle" font-family="'Epilogue', sans-serif" font-weight="300" font-size="7" fill="#242424" letter-spacing="0.5">AI</text>
+          <line x1="104" y1="40" x2="126" y2="40" stroke="#242424" stroke-width="0.9"/>
+          <!-- Process 2 -->
+          <rect x="126" y="30" width="20" height="20" stroke="#242424" stroke-width="1" fill="none"/>
+          <line x1="146" y1="40" x2="168" y2="40" stroke="#242424" stroke-width="0.9"/>
+          <!-- Output -->
+          <circle cx="176" cy="40" r="6" stroke="#242424" stroke-width="1" fill="none"/>
+          <circle cx="176" cy="40" r="2.5" fill="#242424"/>
+          <!-- Labels -->
+          <text x="94" y="62" text-anchor="middle" font-family="'Epilogue', sans-serif" font-size="7" fill="#242424" opacity="0.45" font-weight="300">one node</text>
+        </svg>
+        <div class="illo-label">AI As A Component</div>
+        <div class="illo-desc">One node in the system. Placed where it earns its place.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wm">The AI Minimalist</div>
+    <div class="ver">Icons & Illustration System · v1.0</div>
+  </footer>
+
+</div>
+</body>
+</html>

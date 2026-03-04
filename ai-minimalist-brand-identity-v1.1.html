@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The AI Minimalist — Brand Identity System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream-yellow: #f0f8be;
+      --light-grey: #ededed;
+      --warm-cream: #ede2c7;
+      --mid-grey: #5b5b5b;
+      --dark: #242424;
+      --font-heading: 'Fraunces', serif;
+      --font-body: 'Epilogue', sans-serif;
+    }
+    body {
+      background: var(--warm-cream);
+      color: var(--dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .page { max-width: 900px; margin: 0 auto; padding: 80px 40px; }
+    .section { margin-bottom: 96px; }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid-grey);
+      font-weight: 500;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(91,91,91,0.3);
+      margin-bottom: 48px;
+    }
+    .divider { height: 1px; background: var(--mid-grey); opacity: 0.2; margin: 40px 0; }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 340px;
+      background: var(--dark);
+      padding: 72px 64px;
+      margin-bottom: 96px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cover-top { display: flex; align-items: flex-start; justify-content: space-between; }
+    .cover-mark { }
+    .cover-version {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-cream);
+      opacity: 0.4;
+      font-weight: 300;
+    }
+    .cover-wordmark {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 48px;
+      color: var(--warm-cream);
+      line-height: 1.0;
+      margin-top: 48px;
+    }
+    .cover-descriptor {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm-cream);
+      opacity: 0.4;
+      font-weight: 300;
+      margin-top: 14px;
+    }
+
+    /* ── LOGOMARK ── */
+    .mark-showcase {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+    .mark-card {
+      padding: 56px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      gap: 0;
+    }
+    .mark-sub {
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-top: 24px;
+      opacity: 0.4;
+      text-align: center;
+    }
+    .bg-warm   { background: var(--warm-cream); }
+    .bg-yellow { background: var(--cream-yellow); }
+    .bg-light  { background: var(--light-grey); }
+    .bg-dark   { background: var(--dark); }
+
+    /* ── SCALE ── */
+    .scale-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 48px;
+      background: var(--light-grey);
+    }
+    .scale-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .scale-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-grey); }
+
+    /* ── LOCKUP ── */
+    .lockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .lockup-card {
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-height: 130px;
+    }
+    .lockup-wordmark {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .lockup-sub-text {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 300;
+      opacity: 0.4;
+      margin-top: 6px;
+    }
+
+    /* ── PALETTE ── */
+    .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+    .swatch { height: 130px; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; }
+    .swatch-name { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+    .swatch-hex { font-size: 11px; font-weight: 300; opacity: 0.65; margin-top: 3px; }
+    .swatch-role { font-size: 9px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; margin-top: 6px; }
+
+    /* ── TYPOGRAPHY ── */
+    .type-block { margin-bottom: 40px; }
+    .type-meta { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-grey); font-weight: 500; margin-bottom: 12px; }
+    .t-display { font-family: var(--font-heading); font-weight: 400; font-size: 48px; line-height: 1.05; }
+    .t-heading { font-family: var(--font-heading); font-weight: 400; font-size: 28px; line-height: 1.1; }
+    .t-body { font-family: var(--font-body); font-weight: 300; font-size: 15px; line-height: 1.7; max-width: 560px; }
+    .t-support { font-family: var(--font-body); font-weight: 400; font-size: 13px; line-height: 1.6; color: var(--mid-grey); }
+    .t-label { font-family: var(--font-body); font-weight: 300; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-grey); }
+
+    /* ── RULES ── */
+    .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px; }
+    .rule-title { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+    .rule-body { font-size: 13px; font-weight: 300; line-height: 1.65; color: var(--mid-grey); }
+
+    /* ── CONTENT PREVIEW ── */
+    .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .preview-card {
+      padding: 56px 48px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .preview-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 300; opacity: 0.45; margin-bottom: 20px; }
+    .preview-headline { font-family: var(--font-heading); font-weight: 400; font-size: 30px; line-height: 1.15; max-width: 360px; }
+    .preview-footer { font-size: 10px; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.4; margin-top: 40px; }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      padding: 48px 0 24px;
+      border-top: 1px solid var(--dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-footer .wm { font-family: var(--font-heading); font-weight: 400; font-size: 18px; }
+    .page-footer .ver { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-grey); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-top">
+      <svg width="80" height="48" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+        <line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+        <line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
+        <circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/>
+        <circle cx="108" cy="36" r="3" fill="#ede2c7"/>
+      </svg>
+      <div class="cover-version">Brand Identity System · v1.1</div>
+    </div>
+    <div>
+      <div class="cover-wordmark">The AI Minimalist</div>
+      <div class="cover-descriptor">AI Systems Consulting · Mindset · Methodology</div>
+    </div>
+  </div>
+
+  <!-- 01 LOGOMARK -->
+  <div class="section">
+    <div class="section-label">01 — Logomark · Convergence Mark (Finalized)</div>
+
+    <div style="background:var(--light-grey);padding:64px;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:2px;">
+      <svg width="200" height="120" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
+        <line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
+        <line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
+        <circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/>
+        <circle cx="108" cy="36" r="3" fill="#242424"/>
+      </svg>
+      <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid-grey);margin-top:8px;">Primary · On Light</div>
+    </div>
+
+    <div class="mark-showcase">
+      <div class="mark-card bg-warm">
+        <svg width="80" height="48" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+        <div class="mark-sub">Warm Cream</div>
+      </div>
+      <div class="mark-card bg-yellow">
+        <svg width="80" height="48" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+        <div class="mark-sub">Cream Yellow</div>
+      </div>
+      <div class="mark-card bg-light">
+        <svg width="80" height="48" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+        <div class="mark-sub">Light Grey</div>
+      </div>
+      <div class="mark-card bg-dark">
+        <svg width="80" height="48" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#ede2c7"/></svg>
+        <div class="mark-sub" style="color:var(--warm-cream);">Dark</div>
+      </div>
+    </div>
+
+    <!-- Scale -->
+    <div style="margin-top:2px;">
+      <div class="scale-row">
+        <div class="scale-item">
+          <svg width="16" height="10" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+          <span class="scale-lbl">16px</span>
+        </div>
+        <div class="scale-item">
+          <svg width="32" height="19" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+          <span class="scale-lbl">32px</span>
+        </div>
+        <div class="scale-item">
+          <svg width="64" height="38" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+          <span class="scale-lbl">64px</span>
+        </div>
+        <div class="scale-item">
+          <svg width="120" height="72" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+          <span class="scale-lbl">120px</span>
+        </div>
+        <div class="scale-item">
+          <svg width="200" height="120" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+          <span class="scale-lbl">200px</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 LOCKUPS -->
+  <div class="section">
+    <div class="section-label">02 — Wordmark + Mark Lockups</div>
+    <div class="lockup-grid">
+      <div class="lockup-card bg-warm">
+        <svg width="56" height="34" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+        <div>
+          <div class="lockup-wordmark">The AI Minimalist</div>
+          <div class="lockup-sub-text">Primary · Warm Cream</div>
+        </div>
+      </div>
+      <div class="lockup-card bg-dark">
+        <svg width="56" height="34" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#ede2c7"/></svg>
+        <div>
+          <div class="lockup-wordmark" style="color:var(--warm-cream);">The AI Minimalist</div>
+          <div class="lockup-sub-text">Primary · Dark</div>
+        </div>
+      </div>
+      <div class="lockup-card bg-yellow">
+        <svg width="56" height="34" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+        <div>
+          <div class="lockup-wordmark">The AI Minimalist</div>
+          <div class="lockup-sub-text">Accent · Cream Yellow</div>
+        </div>
+      </div>
+      <div class="lockup-card bg-light">
+        <svg width="56" height="34" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+        <div>
+          <div class="lockup-wordmark">The AI Minimalist</div>
+          <div class="lockup-sub-text">Neutral · Light Grey</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 COLOR -->
+  <div class="section">
+    <div class="section-label">03 — Color Palette</div>
+    <div class="palette-grid">
+      <div class="swatch" style="background:#ede2c7;color:#242424;">
+        <div class="swatch-name">Warm Cream</div>
+        <div class="swatch-hex">#ede2c7</div>
+        <div class="swatch-role">Primary BG</div>
+      </div>
+      <div class="swatch" style="background:#f0f8be;color:#242424;">
+        <div class="swatch-name">Cream Yellow</div>
+        <div class="swatch-hex">#f0f8be</div>
+        <div class="swatch-role">Accent BG</div>
+      </div>
+      <div class="swatch" style="background:#ededed;color:#242424;">
+        <div class="swatch-name">Light Grey</div>
+        <div class="swatch-hex">#ededed</div>
+        <div class="swatch-role">Neutral BG</div>
+      </div>
+      <div class="swatch" style="background:#5b5b5b;color:#ededed;">
+        <div class="swatch-name">Mid Grey</div>
+        <div class="swatch-hex">#5b5b5b</div>
+        <div class="swatch-role">Secondary Text</div>
+      </div>
+      <div class="swatch" style="background:#242424;color:#ede2c7;">
+        <div class="swatch-name">Dark</div>
+        <div class="swatch-hex">#242424</div>
+        <div class="swatch-role">Primary Text / Dark BG</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-label">04 — Typography System</div>
+
+    <div class="type-block">
+      <div class="type-meta">Display — Fraunces 400 · 48px</div>
+      <div class="t-display">Most founders use AI<br>in the wrong places.</div>
+    </div>
+    <div class="divider"></div>
+    <div class="type-block">
+      <div class="type-meta">Heading — Fraunces 400 · 28px</div>
+      <div class="t-heading">Map the system first.<br>Then decide where AI belongs.</div>
+    </div>
+    <div class="divider"></div>
+    <div class="type-block">
+      <div class="type-meta">Body — Epilogue 300 · 15px</div>
+      <div class="t-body">You don't have an AI problem. You have a systems problem. AI is a component — not the answer. The founders who win aren't the ones with the most tools. They're the ones who understand their process well enough to know exactly where AI earns its place.</div>
+    </div>
+    <div class="divider"></div>
+    <div class="type-block">
+      <div class="type-meta">Support — Epilogue 400 · 13px</div>
+      <div class="t-support">AI Minimalist & Systems Thinker · Industrial Engineer</div>
+    </div>
+    <div class="divider"></div>
+    <div class="type-block">
+      <div class="type-meta">Label / Caption — Epilogue 300 · 11px · Tracked</div>
+      <div class="t-label">Systems Consulting · Free Audit · AI Minimalist Framework</div>
+    </div>
+  </div>
+
+  <!-- 05 CONTENT PREVIEW -->
+  <div class="section">
+    <div class="section-label">05 — Content Application</div>
+    <div class="preview-grid">
+      <div class="preview-card bg-dark" style="color:var(--warm-cream);">
+        <div>
+          <div class="preview-eyebrow">The AI Minimalist</div>
+          <div class="preview-headline">You don't have an AI problem. You have a systems problem.</div>
+        </div>
+        <div>
+          <svg width="40" height="24" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#ede2c7"/></svg>
+          <div class="preview-footer" style="color:var(--warm-cream);">Dark Mode · Primary</div>
+        </div>
+      </div>
+      <div class="preview-card bg-yellow" style="color:var(--dark);">
+        <div>
+          <div class="preview-eyebrow">The AI Minimalist</div>
+          <div class="preview-headline">Map the system first. Then decide where AI belongs.</div>
+        </div>
+        <div>
+          <svg width="40" height="24" viewBox="0 0 120 72" fill="none"><line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/><line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/><circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/><circle cx="108" cy="36" r="3" fill="#242424"/></svg>
+          <div class="preview-footer">Light Mode · Cream Yellow</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 STYLE RULES -->
+  <div class="section">
+    <div class="section-label">06 — Style Rules</div>
+    <div class="rules-grid">
+      <div>
+        <div class="rule-title">Logomark Usage</div>
+        <div class="rule-body">Always use the Convergence mark. Three lines collapse into a single ringed node. Never stretch, rotate, or recolor outside the defined palette. Minimum size: 16px wide.</div>
+      </div>
+      <div>
+        <div class="rule-title">Typography</div>
+        <div class="rule-body">Fraunces is always 400 — never bold. Epilogue body at 300. Labels tracked at +0.12–0.2em. No italics in UI contexts. Headings never exceed 48px in body content.</div>
+      </div>
+      <div>
+        <div class="rule-title">Color</div>
+        <div class="rule-body">Warm Cream (#ede2c7) is the default light background. Dark (#242424) is the default dark. Cream Yellow (#f0f8be) is an accent — use sparingly. Never use more than 3 palette colors in a single composition.</div>
+      </div>
+      <div>
+        <div class="rule-title">Spacing</div>
+        <div class="rule-body">Base unit: 8px. All spacing in multiples — 8, 16, 24, 32, 48, 64, 80. Generous white space is a brand signal. Never crowd the mark or wordmark.</div>
+      </div>
+      <div>
+        <div class="rule-title">Lines & Borders</div>
+        <div class="rule-body">Dividers at 1px only. Never thicker. Use opacity (20–40%) to soften. Square corners throughout — no border radius. The brand is thin-line, not thick-line.</div>
+      </div>
+      <div>
+        <div class="rule-title">Voice Alignment</div>
+        <div class="rule-body">Direct. Diagnostic. Confident without being loud. Short sentences. No filler. The brand never screams — it states. Every word earns its place, same as every tool in the system.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    <div class="wm">The AI Minimalist</div>
+    <div class="ver">Brand Identity System · v1.1 · Finalized</div>
+  </div>
+
+</div>
+</body>
+</html>
