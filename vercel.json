@@ -1,0 +1,31 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/work-with-me.html",
+      "destination": "/work-with-me",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/methodology.html",
+      "destination": "/methodology",
+      "permanent": true
+    },
+    {
+      "source": "/philosophy.html",
+      "destination": "/philosophy",
+      "permanent": true
+    },
+    {
+      "source": "/newsletter.html",
+      "destination": "/newsletter",
+      "permanent": true
+    }
+  ]
+}
