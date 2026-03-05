@@ -43,6 +43,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    .audit-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      cursor: pointer;
+      list-style: none;
+    }
+    .audit-item input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .audit-check {
+      min-width: 22px;
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      border: 1.25px solid var(--dark);
+      border-radius: 3px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 150ms ease;
+    }
+    .audit-item input:checked ~ .audit-check {
+      background: var(--dark);
+    }
+    .audit-item input:checked ~ .audit-check::after {
+      content: '';
+      display: block;
+      width: 11px;
+      height: 6px;
+      border-left: 1.5px solid var(--warm-cream);
+      border-bottom: 1.5px solid var(--warm-cream);
+      transform: rotate(-45deg) translate(1px, -1px);
+    }
+    .audit-item .audit-text {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--dark);
+      margin: 0;
+      padding-top: 1px;
+    }
+    .audit-checklist {
+      list-style: none;
+      padding: 0;
+      max-width: 640px;
+    }
+  </style>
 </head>
 <body>
 
@@ -64,6 +119,7 @@
     <li><a href="/philosophy">Philosophy</a></li>
     <li><a href="/work-with-me">Work With Me</a></li>
     <li><a href="/newsletter">Newsletter</a></li>
+    <li><a href="/ai-waste-audit" class="active">The Audit</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -78,69 +134,64 @@
   <a href="/philosophy">Philosophy</a>
   <a href="/work-with-me">Work With Me</a>
   <a href="/newsletter">Newsletter</a>
+  <a href="/ai-waste-audit">The Audit</a>
 </div>
 
 <!-- HERO -->
-<section class="section-hero bg-cream" aria-labelledby="audit-hero-headline">
-  <div class="container">
+<section style="padding: calc(var(--nav-height) + 80px) 32px 72px; background: var(--warm-cream);" aria-labelledby="audit-hero-headline">
+  <div class="container-narrow">
     <span class="section-label">The AI Minimalist</span>
-    <h1 class="t-display" id="audit-hero-headline">Before You Buy Another AI Tool, Read This.</h1>
-    <p class="t-body" style="max-width:560px; margin-top:24px;">Most founders don't misuse AI because they lack intelligence. They misuse it because they never mapped the system first.</p>
+    <h1 class="t-display" id="audit-hero-headline" style="margin-bottom:24px;">Before You Buy Another AI Tool, Read This.</h1>
+    <p class="t-body" style="max-width:560px;">Most founders don't misuse AI because they lack intelligence. They misuse it because they never mapped the system first.</p>
   </div>
 </section>
 
 <!-- TEASER — 10 Signs of AI Waste -->
-<section class="section-standard bg-white" aria-labelledby="audit-teaser-headline">
-  <div class="container">
+<section class="bg-grey" style="padding:96px 32px;" aria-labelledby="audit-teaser-headline">
+  <div class="container-narrow">
     <span class="section-label">The 10 Signs of AI Waste</span>
     <h2 class="t-heading-lg" id="audit-teaser-headline" style="margin-bottom:48px;">How many of these apply to your business?</h2>
 
-    <ul class="audit-checklist" aria-label="AI waste checklist preview" style="list-style:none; padding:0; max-width:640px;">
-      <li class="audit-checklist-item" style="display:flex; gap:16px; align-items:flex-start; margin-bottom:28px;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="min-width:22px; margin-top:3px;">
-          <rect x="3" y="3" width="18" height="18" rx="3" stroke="#242424" stroke-width="1.25" fill="none"/>
-        </svg>
-        <p class="t-body" style="margin:0;">You have 2+ AI subscriptions but cannot clearly describe what each one specifically solved.</p>
+    <ul class="audit-checklist" aria-label="AI waste checklist preview">
+      <li class="audit-item">
+        <label style="display:flex; gap:16px; align-items:flex-start; cursor:pointer; width:100%;">
+          <input type="checkbox">
+          <span class="audit-check"></span>
+          <span class="audit-text">You have 2+ AI subscriptions but cannot clearly describe what each one specifically solved.</span>
+        </label>
       </li>
-      <li class="audit-checklist-item" style="display:flex; gap:16px; align-items:flex-start; margin-bottom:28px;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="min-width:22px; margin-top:3px;">
-          <rect x="3" y="3" width="18" height="18" rx="3" stroke="#242424" stroke-width="1.25" fill="none"/>
-        </svg>
-        <p class="t-body" style="margin:0;">You added AI to a process that was already broken — assuming the tool would fix structural issues.</p>
+      <li class="audit-item">
+        <label style="display:flex; gap:16px; align-items:flex-start; cursor:pointer; width:100%;">
+          <input type="checkbox">
+          <span class="audit-check"></span>
+          <span class="audit-text">You added AI to a process that was already broken — assuming the tool would fix structural issues.</span>
+        </label>
       </li>
-      <li class="audit-checklist-item" style="display:flex; gap:16px; align-items:flex-start; margin-bottom:28px;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="min-width:22px; margin-top:3px;">
-          <rect x="3" y="3" width="18" height="18" rx="3" stroke="#242424" stroke-width="1.25" fill="none"/>
-        </svg>
-        <p class="t-body" style="margin:0;">Your team uses AI individually, but nothing connects to your actual operational system.</p>
+      <li class="audit-item">
+        <label style="display:flex; gap:16px; align-items:flex-start; cursor:pointer; width:100%;">
+          <input type="checkbox">
+          <span class="audit-check"></span>
+          <span class="audit-text">Your team uses AI individually, but nothing connects to your actual operational system.</span>
+        </label>
       </li>
     </ul>
 
-    <!-- Fade gate treatment -->
-    <div style="position:relative; max-width:640px; pointer-events:none; user-select:none;" aria-hidden="true">
-      <div style="opacity:0.18;">
-        <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:28px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="min-width:22px; margin-top:3px;">
-            <rect x="3" y="3" width="18" height="18" rx="3" stroke="#242424" stroke-width="1.25" fill="none"/>
-          </svg>
-          <p class="t-body" style="margin:0;">&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;&#8203;</p>
-        </div>
-      </div>
-      <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent 0%, var(--bg-white, #ffffff) 80%);"></div>
-    </div>
+    <p class="t-body" style="color:var(--mid-grey); margin-top:8px; padding-left:38px;">...and 7 more in the full checklist.</p>
 
-    <p class="t-body" style="color:var(--mid-gray, #888); font-style:italic; margin-top:0;">...and 7 more</p>
+    <div style="margin-top:40px;">
+      <a href="#subscribe" class="btn btn-dark">Get the Full 10-Point Audit</a>
+    </div>
   </div>
 </section>
 
 <!-- GATE — Email Capture -->
 <section class="bg-dark" id="subscribe" aria-labelledby="audit-gate-headline">
-  <div class="container" style="text-align:center; padding-top:80px; padding-bottom:80px;">
+  <div class="container-narrow" style="text-align:center; padding-top:80px; padding-bottom:80px;">
     <span class="section-label section-label-dim">Get the Full 10-Point Audit</span>
     <h2 class="t-heading-lg" id="audit-gate-headline" style="color:var(--warm-cream); margin-bottom:24px;">Get the Full 10-Point Audit</h2>
     <p class="t-body" style="color:var(--warm-cream); opacity:0.7; max-width:480px; margin:0 auto 40px;">Enter your email. We'll send you the complete checklist as a PDF — plus the diagnostic that shows you exactly where AI belongs in your operation.</p>
 
-    <div style="width:100%; max-width:680px; margin:0 auto;">
+    <div style="width:100%; max-width:600px; margin:0 auto;">
       <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
       <iframe src="https://subscribe-forms.beehiiv.com/adba90f1-4bb4-4670-a435-d13a816c92e4" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 557px; height: 205px; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"></iframe>
     </div>
@@ -148,8 +199,8 @@
 </section>
 
 <!-- WHAT THIS REVEALS -->
-<section class="section-standard bg-cream" aria-labelledby="audit-reveals-headline">
-  <div class="container" style="max-width:640px;">
+<section class="bg-warm" style="padding:96px 32px;" aria-labelledby="audit-reveals-headline">
+  <div class="container-narrow" style="max-width:640px;">
     <span class="section-label">What This Reveals</span>
     <h2 class="t-heading-md" id="audit-reveals-headline" style="margin-bottom:32px;">If you checked more than three:</h2>
     <p class="t-body" style="margin-bottom:24px;">The issue isn't your prompting skill. It isn't the model. It isn't the tool.</p>
@@ -159,8 +210,8 @@
 </section>
 
 <!-- CTA -->
-<section class="section-standard bg-white" aria-labelledby="audit-cta-headline">
-  <div class="container" style="max-width:640px;">
+<section class="bg-grey" style="padding:96px 32px;" aria-labelledby="audit-cta-headline">
+  <div class="container-narrow" style="max-width:640px;">
     <p class="t-body" style="margin-bottom:24px;">The AI Minimalist Diagnostic walks you through mapping one real workflow inside your business and identifying where waste exists, what should remain human, and where AI belongs.</p>
     <p class="t-body" style="margin-bottom:40px;">It takes less than 20 minutes.</p>
     <a href="/work-with-me" class="btn btn-dark">Start the Diagnostic</a>
@@ -186,6 +237,7 @@
       <li><a href="/philosophy">Philosophy</a></li>
       <li><a href="/work-with-me">Work With Me</a></li>
       <li><a href="/newsletter">Newsletter</a></li>
+      <li><a href="/ai-waste-audit">The Audit</a></li>
     </ul>
     <p class="footer-copy">© 2026 The AI Minimalist</p>
   </div>
