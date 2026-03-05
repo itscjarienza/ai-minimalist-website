@@ -26,6 +26,11 @@
       "source": "/newsletter.html",
       "destination": "/newsletter",
       "permanent": true
+    },
+    {
+      "source": "/ai-waste-audit.html",
+      "destination": "/ai-waste-audit",
+      "permanent": true
     }
   ]
 }
