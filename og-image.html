@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #ede2c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .border {
+      position: absolute;
+      inset: 40px;
+      border: 0.75px solid rgba(36,36,36,0.18);
+      pointer-events: none;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .wordmark {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 400;
+      font-size: 72px;
+      line-height: 1;
+      color: #242424;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="border"></div>
+
+  <div class="logo-group">
+    <!-- Logo mark — same geometry as the nav favicon, scaled up -->
+    <svg width="180" height="108" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1.2"/>
+      <line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1.2"/>
+      <line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1.2"/>
+      <circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/>
+      <circle cx="108" cy="36" r="3" fill="#242424"/>
+    </svg>
+
+    <span class="wordmark">The AI Minimalist</span>
+  </div>
+</body>
+</html>
