@@ -44,21 +44,34 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
+    /* ── AUDIT CHECKLIST ── */
+    .audit-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
     .audit-item {
+      margin-bottom: 20px;
+    }
+
+    .audit-label {
       display: flex;
       gap: 16px;
       align-items: flex-start;
-      margin-bottom: 28px;
       cursor: pointer;
-      list-style: none;
+      user-select: none;
     }
-    .audit-item input[type="checkbox"] {
+
+    .audit-label input[type="checkbox"] {
       position: absolute;
       opacity: 0;
       width: 0;
       height: 0;
+      pointer-events: none;
     }
-    .audit-check {
+
+    .audit-box {
       min-width: 22px;
       width: 22px;
       height: 22px;
@@ -69,12 +82,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 150ms ease;
+      transition: background 150ms ease, border-color 150ms ease;
     }
-    .audit-item input:checked ~ .audit-check {
+
+    .audit-label:hover .audit-box {
+      border-color: var(--dark);
+      opacity: 0.6;
+    }
+
+    .audit-label input:checked ~ .audit-box {
       background: var(--dark);
+      border-color: var(--dark);
     }
-    .audit-item input:checked ~ .audit-check::after {
+
+    .audit-label input:checked ~ .audit-box::after {
       content: '';
       display: block;
       width: 11px;
@@ -83,19 +104,108 @@
       border-bottom: 1.5px solid var(--warm-cream);
       transform: rotate(-45deg) translate(1px, -1px);
     }
-    .audit-item .audit-text {
+
+    .audit-label input:checked ~ .audit-text {
+      opacity: 0.5;
+      text-decoration: line-through;
+      text-decoration-color: rgba(36,36,36,0.3);
+    }
+
+    .audit-text {
       font-family: var(--font-body);
       font-weight: 300;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--dark);
       margin: 0;
       padding-top: 1px;
+      transition: opacity 200ms ease;
     }
-    .audit-checklist {
-      list-style: none;
-      padding: 0;
-      max-width: 640px;
+
+    /* ── RESULT PANEL ── */
+    .audit-result {
+      margin-top: 56px;
+      border-top: 1px solid rgba(36,36,36,0.15);
+      padding-top: 48px;
+    }
+
+    .audit-score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .audit-score-num {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 72px);
+      line-height: 1;
+      color: var(--dark);
+      transition: all 200ms ease;
+    }
+
+    .audit-score-denom {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 18px;
+      color: var(--dark);
+      opacity: 0.4;
+    }
+
+    .audit-tier {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      border: 1px solid var(--dark);
+      padding: 5px 14px;
+      margin-bottom: 24px;
+      opacity: 0;
+      transition: opacity 250ms ease;
+    }
+
+    .audit-tier.visible {
+      opacity: 1;
+    }
+
+    .audit-result-body {
+      max-width: 520px;
+    }
+
+    .audit-result-meaning {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--dark);
+      margin-bottom: 12px;
+      min-height: 1.65em;
+      transition: opacity 200ms ease;
+    }
+
+    .audit-result-next {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--dark);
+      opacity: 0.6;
+      margin-bottom: 32px;
+      min-height: 1.6em;
+      transition: opacity 200ms ease;
+    }
+
+    .audit-result-cta {
+      opacity: 0;
+      transition: opacity 250ms ease;
+    }
+
+    .audit-result-cta.visible {
+      opacity: 1;
     }
   </style>
 </head>
@@ -143,58 +253,120 @@
     <span class="section-label">The AI Minimalist</span>
     <h1 class="t-display" id="audit-hero-headline" style="margin-bottom:24px;">Before You Buy Another AI Tool, Read This.</h1>
     <p class="t-body" style="max-width:560px;">Most founders don't misuse AI because they lack intelligence. They misuse it because they never mapped the system first.</p>
+    <p class="t-body" style="max-width:560px; margin-top:16px; opacity:0.6;">Ten statements. Check the ones that apply. Your score updates in real time.</p>
   </div>
 </section>
 
-<!-- TEASER — 10 Signs of AI Waste -->
-<section class="bg-grey" style="padding:96px 32px;" aria-labelledby="audit-teaser-headline">
+<!-- AUDIT -->
+<section class="bg-grey" style="padding:80px 32px 96px;" aria-labelledby="audit-checklist-headline">
   <div class="container-narrow">
-    <span class="section-label">The 10 Signs of AI Waste</span>
-    <h2 class="t-heading-lg" id="audit-teaser-headline" style="margin-bottom:48px;">How many of these apply to your business?</h2>
 
-    <ul class="audit-checklist" aria-label="AI waste checklist preview">
+    <h2 class="t-heading-md" id="audit-checklist-headline" style="margin-bottom:40px;">The 10 Signs of AI Waste</h2>
+
+    <ul class="audit-checklist" id="audit-list" aria-label="AI waste self-assessment">
+
       <li class="audit-item">
-        <label style="display:flex; gap:16px; align-items:flex-start; cursor:pointer; width:100%;">
-          <input type="checkbox">
-          <span class="audit-check"></span>
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
           <span class="audit-text">You have 2+ AI subscriptions but cannot clearly describe what each one specifically solved.</span>
         </label>
       </li>
+
       <li class="audit-item">
-        <label style="display:flex; gap:16px; align-items:flex-start; cursor:pointer; width:100%;">
-          <input type="checkbox">
-          <span class="audit-check"></span>
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
           <span class="audit-text">You added AI to a process that was already broken — assuming the tool would fix structural issues.</span>
         </label>
       </li>
+
       <li class="audit-item">
-        <label style="display:flex; gap:16px; align-items:flex-start; cursor:pointer; width:100%;">
-          <input type="checkbox">
-          <span class="audit-check"></span>
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
           <span class="audit-text">Your team uses AI individually, but nothing connects to your actual operational system.</span>
         </label>
       </li>
+
+      <li class="audit-item">
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
+          <span class="audit-text">You bought an AI tool because someone recommended it — but not because you identified a defined bottleneck.</span>
+        </label>
+      </li>
+
+      <li class="audit-item">
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
+          <span class="audit-text">You use AI to generate outputs, but spend the same amount of time editing due to hallucinations.</span>
+        </label>
+      </li>
+
+      <li class="audit-item">
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
+          <span class="audit-text">When asked how your company uses AI, you say "we use ChatGPT" but can't specify where it fits in your workflow.</span>
+        </label>
+      </li>
+
+      <li class="audit-item">
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
+          <span class="audit-text">You automated a task, but the output requires significant manual cleanup every time.</span>
+        </label>
+      </li>
+
+      <li class="audit-item">
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
+          <span class="audit-text">You bought an AI tool, used it twice, and it has been idle for months.</span>
+        </label>
+      </li>
+
+      <li class="audit-item">
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
+          <span class="audit-text">Your "AI strategy" is a list of tools, not a mapped process.</span>
+        </label>
+      </li>
+
+      <li class="audit-item">
+        <label class="audit-label">
+          <input type="checkbox" name="audit">
+          <span class="audit-box" aria-hidden="true"></span>
+          <span class="audit-text">After six months of experimenting, you are still unsure where AI actually belongs in your operation.</span>
+        </label>
+      </li>
+
     </ul>
 
-    <p class="t-body" style="color:var(--mid-grey); margin-top:8px; padding-left:38px;">...and 7 more in the full checklist.</p>
+    <!-- RESULT PANEL -->
+    <div class="audit-result" id="audit-result" aria-live="polite" aria-atomic="true">
 
-    <div style="margin-top:40px;">
-      <a href="#subscribe" class="btn btn-dark">Get the Full 10-Point Audit</a>
+      <div class="audit-score-row">
+        <span class="audit-score-num" id="score-num">0</span>
+        <span class="audit-score-denom">/ 10</span>
+      </div>
+
+      <span class="audit-tier" id="result-tier">—</span>
+
+      <div class="audit-result-body">
+        <p class="audit-result-meaning" id="result-meaning">Check the statements above that apply to your business.</p>
+        <p class="audit-result-next" id="result-next"></p>
+        <div class="audit-result-cta" id="result-cta">
+          <a href="/work-with-me" class="btn btn-dark">Start the Diagnostic</a>
+        </div>
+      </div>
+
     </div>
-  </div>
-</section>
 
-<!-- GATE — Email Capture -->
-<section class="bg-dark" id="subscribe" aria-labelledby="audit-gate-headline">
-  <div class="container-narrow" style="text-align:center; padding-top:80px; padding-bottom:80px;">
-    <span class="section-label section-label-dim">Get the Full 10-Point Audit</span>
-    <h2 class="t-heading-lg" id="audit-gate-headline" style="color:var(--warm-cream); margin-bottom:24px;">Get the Full 10-Point Audit</h2>
-    <p class="t-body" style="color:var(--warm-cream); opacity:0.7; max-width:480px; margin:0 auto 40px;">Enter your email. We'll send you the complete checklist as a PDF — plus the diagnostic that shows you exactly where AI belongs in your operation.</p>
-
-    <div style="width:100%; max-width:600px; margin:0 auto;">
-      <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-      <iframe src="https://subscribe-forms.beehiiv.com/adba90f1-4bb4-4670-a435-d13a816c92e4" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width: 557px; height: 205px; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"></iframe>
-    </div>
   </div>
 </section>
 
@@ -202,7 +374,7 @@
 <section class="bg-warm" style="padding:96px 32px;" aria-labelledby="audit-reveals-headline">
   <div class="container-narrow" style="max-width:640px;">
     <span class="section-label">What This Reveals</span>
-    <h2 class="t-heading-md" id="audit-reveals-headline" style="margin-bottom:32px;">If you checked more than three:</h2>
+    <h2 class="t-heading-md" id="audit-reveals-headline" style="margin-bottom:32px;">The score isn't the problem. The pattern is.</h2>
     <p class="t-body" style="margin-bottom:24px;">The issue isn't your prompting skill. It isn't the model. It isn't the tool.</p>
     <p class="t-body" style="margin-bottom:24px;">It's placement.</p>
     <p class="t-body">AI creates leverage only when it sits in the right part of the system. Very few businesses ever start with the map.</p>
@@ -210,7 +382,7 @@
 </section>
 
 <!-- CTA -->
-<section class="bg-grey" style="padding:96px 32px;" aria-labelledby="audit-cta-headline">
+<section class="bg-grey" style="padding:96px 32px;">
   <div class="container-narrow" style="max-width:640px;">
     <p class="t-body" style="margin-bottom:24px;">The AI Minimalist Diagnostic walks you through mapping one real workflow inside your business and identifying where waste exists, what should remain human, and where AI belongs.</p>
     <p class="t-body" style="margin-bottom:40px;">It takes less than 20 minutes.</p>
@@ -244,5 +416,67 @@
 </footer>
 
 <script src="components.js"></script>
+<script>
+  (function () {
+    var checkboxes = document.querySelectorAll('#audit-list input[type="checkbox"]');
+    var scoreEl    = document.getElementById('score-num');
+    var tierEl     = document.getElementById('result-tier');
+    var meaningEl  = document.getElementById('result-meaning');
+    var nextEl     = document.getElementById('result-next');
+    var ctaEl      = document.getElementById('result-cta');
+
+    var tiers = [
+      {
+        max: 2,
+        label: 'Experimenting',
+        meaning: 'No major structural waste yet. You\'re in early exploration mode.',
+        next: 'The Diagnostic will help you build the map before the waste starts.'
+      },
+      {
+        max: 5,
+        label: 'Reactive',
+        meaning: 'AI is being used reactively. You likely have misalignment between tools and processes.',
+        next: 'The Diagnostic identifies exactly where the misalignment lives.'
+      },
+      {
+        max: 10,
+        label: 'Tool Sprawl',
+        meaning: 'You are likely experiencing tool sprawl, unclear placement, and hidden operational waste.',
+        next: 'The Diagnostic is where to start. One session maps the whole picture.'
+      }
+    ];
+
+    function update() {
+      var count = 0;
+      checkboxes.forEach(function (cb) { if (cb.checked) count++; });
+
+      scoreEl.textContent = count;
+
+      if (count === 0) {
+        tierEl.textContent = '—';
+        tierEl.classList.remove('visible');
+        meaningEl.textContent = 'Check the statements above that apply to your business.';
+        nextEl.textContent = '';
+        ctaEl.classList.remove('visible');
+        return;
+      }
+
+      var tier = tiers[0];
+      for (var i = 0; i < tiers.length; i++) {
+        if (count <= tiers[i].max) { tier = tiers[i]; break; }
+      }
+
+      tierEl.textContent = tier.label;
+      tierEl.classList.add('visible');
+      meaningEl.textContent = tier.meaning;
+      nextEl.textContent = tier.next;
+      ctaEl.classList.add('visible');
+    }
+
+    checkboxes.forEach(function (cb) {
+      cb.addEventListener('change', update);
+    });
+  })();
+</script>
 </body>
 </html>
