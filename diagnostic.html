@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The AI Minimalist Diagnostic</title>
+<style>
+  /* ─── Reset & Base ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0f0f0f;
+    --white: #fafafa;
+    --gray-100: #f4f4f4;
+    --gray-200: #e8e8e8;
+    --gray-400: rgb(153, 153, 153);
+    --gray-600: #555;
+    --gray-800: #222;
+    --accent: #1a1a1a;
+    --tag-bg: #f0f0f0;
+    --radius: 10px;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px 80px;
+  }
+
+  /* ─── Progress Bar ─── */
+  #progress-track {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: var(--gray-200);
+    z-index: 100;
+  }
+  #progress-fill {
+    height: 100%;
+    background: var(--black);
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* ─── Progress Label (floating right) ─── */
+  #progress-label {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--gray-400);
+    z-index: 100;
+    display: none;
+  }
+  #progress-label.visible { display: block; }
+
+  /* ─── Header ─── */
+  .site-header {
+    width: 100%;
+    max-width: 640px;
+    padding: 48px 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .site-header .wordmark {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  /* ─── Main Container ─── */
+  .container {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  /* ─── Screens ─── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ─── Intro Screen ─── */
+  .intro-headline {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .intro-sub {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--gray-600);
+    margin-bottom: 32px;
+  }
+  .intro-meta {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+  .meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-800);
+  }
+  .steps-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+    border-left: 2px solid var(--gray-200);
+    padding-left: 20px;
+  }
+  .step-preview-item {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.4;
+  }
+  .step-preview-item strong {
+    color: var(--black);
+    font-weight: 600;
+  }
+
+  /* ─── Question Meta Row ─── */
+  .q-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .q-count {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  /* ─── Step Screen ─── */
+  .step-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+  .step-title {
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .step-description {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray-600);
+    margin-bottom: 28px;
+  }
+  .insight-box {
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--gray-600);
+    border-left: 3px solid var(--black);
+  }
+  .insight-box strong { color: var(--black); }
+
+  /* ─── Questions ─── */
+  .question-block {
+    margin-bottom: 24px;
+  }
+  .question-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  /* Option buttons */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .option-btn {
+    background: var(--white);
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    font-size: 14px;
+    font-family: var(--font);
+    color: var(--gray-800);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    line-height: 1.4;
+  }
+  .option-btn:hover {
+    border-color: var(--black);
+    background: var(--gray-100);
+  }
+  .option-btn.selected {
+    border-color: var(--black);
+    background: var(--black);
+    color: var(--white);
+  }
+
+  /* Text input */
+  .text-input {
+    width: 100%;
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    font-size: 14px;
+    font-family: var(--font);
+    color: var(--black);
+    background: var(--white);
+    resize: vertical;
+    min-height: 90px;
+    transition: border-color 0.15s ease;
+    line-height: 1.6;
+  }
+  .text-input:focus {
+    outline: none;
+    border-color: var(--black);
+  }
+  .text-input::placeholder { color: var(--gray-400); }
+
+  /* Checkbox group */
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 16px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .checkbox-item:hover { border-color: var(--black); background: var(--gray-100); }
+  .checkbox-item.checked { border-color: var(--black); background: var(--black); }
+  .checkbox-item.checked .checkbox-label { color: var(--white); }
+  .checkbox-item input[type="checkbox"] { display: none; }
+  .checkbox-box {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 1.5px solid var(--gray-400);
+    border-radius: 4px;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+  .checkbox-item.checked .checkbox-box {
+    background: var(--white);
+    border-color: var(--white);
+  }
+  .checkbox-box svg { display: none; }
+  .checkbox-item.checked .checkbox-box svg { display: block; }
+  .checkbox-label {
+    font-size: 14px;
+    color: var(--gray-800);
+    line-height: 1.4;
+  }
+
+  /* Slider */
+  .slider-wrapper { padding: 8px 0; }
+  .slider-input {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--gray-200);
+    outline: none;
+    margin-bottom: 10px;
+  }
+  .slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--black);
+    cursor: pointer;
+  }
+  .slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--gray-400);
+  }
+  .slider-value-display {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  /* ─── Navigation ─── */
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gray-200);
+  }
+  .btn-back {
+    font-size: 14px;
+    font-family: var(--font);
+    color: var(--gray-400);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 0;
+    transition: color 0.15s;
+  }
+  .btn-back:hover { color: var(--black); }
+  .btn-next {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .btn-next:hover { opacity: 0.8; }
+  .btn-next:disabled { opacity: 0.3; cursor: not-allowed; }
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: opacity 0.15s;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .btn-primary:hover { opacity: 0.8; }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--black);
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .btn-secondary:hover { border-color: var(--black); }
+
+  /* ─── Results Screen ─── */
+  .result-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .tag-systems { background: #fff0cc; color: #8a6300; }
+  .tag-mixed   { background: #e8f4ff; color: #1a5fa8; }
+  .tag-ready   { background: #e6f9f0; color: #1a7a4a; }
+
+  .result-headline {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .result-summary {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray-600);
+    margin-bottom: 32px;
+  }
+
+  .findings-section {
+    margin-bottom: 32px;
+  }
+  .findings-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 14px;
+  }
+  .finding-item {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray-200);
+    align-items: flex-start;
+  }
+  .finding-item:last-child { border-bottom: none; }
+  .finding-icon {
+    font-size: 18px;
+    min-width: 24px;
+    margin-top: 1px;
+  }
+  .finding-content {}
+  .finding-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 3px;
+  }
+  .finding-text {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  .score-block {
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .score-number {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .score-label {
+    font-size: 13px;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .score-bar-wrap {
+    margin-top: 16px;
+    background: var(--gray-200);
+    border-radius: 100px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    background: var(--black);
+    border-radius: 100px;
+    transition: width 1s ease;
+  }
+
+  .recommendation-box {
+    border: 1.5px solid var(--black);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .rec-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 10px;
+  }
+  .rec-headline {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .rec-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--gray-600);
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 40px 0 0;
+    border-top: 1px solid var(--gray-200);
+  }
+  .cta-headline {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .cta-sub {
+    font-size: 14px;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ─── Score description ─── */
+  #score-description {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  /* ─── Animations ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .screen.active { animation: fadeUp 0.35s ease forwards; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 480px) {
+    .intro-meta { flex-wrap: wrap; gap: 16px; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-track"><div id="progress-fill"></div></div>
+<div id="progress-label"></div>
+
+<header class="site-header">
+  <span class="wordmark">The AI Minimalist</span>
+</header>
+
+<main class="container">
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN 0 — INTRO
+  ═══════════════════════════════════════════ -->
+  <section class="screen active" id="screen-intro">
+    <h1 class="intro-headline">Find EXACTLY where AI belongs in your business.</h1>
+    <p class="intro-sub">Most founders don't have an AI problem. They have a systems problem. This diagnostic shows you the difference — and where to look first.</p>
+
+    <div class="intro-meta">
+      <div class="meta-item">
+        <span class="meta-label">Time</span>
+        <span class="meta-value">~10 minutes</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Steps</span>
+        <span class="meta-value">5 steps</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Cost</span>
+        <span class="meta-value">Free</span>
+      </div>
+    </div>
+
+    <div class="steps-preview">
+      <div class="step-preview-item"><strong>Step 1 —</strong> Map the system as it actually exists</div>
+      <div class="step-preview-item"><strong>Step 2 —</strong> Identify structural waste</div>
+      <div class="step-preview-item"><strong>Step 3 —</strong> Apply the AI placement filter</div>
+      <div class="step-preview-item"><strong>Step 4 —</strong> Define the output before you implement</div>
+      <div class="step-preview-item"><strong>Step 5 —</strong> Validate simplicity</div>
+    </div>
+
+    <button class="btn-primary" onclick="startDiagnostic()">Start the Diagnostic →</button>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN — DYNAMIC QUESTION (one at a time)
+  ═══════════════════════════════════════════ -->
+  <section class="screen" id="screen-question">
+    <div class="q-meta">
+      <div class="step-label" id="dyn-step-label"></div>
+      <div class="q-count" id="dyn-q-count"></div>
+    </div>
+    <h2 class="step-title" id="dyn-step-title"></h2>
+    <div class="insight-box" id="dyn-insight" style="display:none"></div>
+    <div class="question-block">
+      <div class="question-text" id="dyn-q-text"></div>
+      <div id="dyn-input"></div>
+    </div>
+    <div class="nav-row">
+      <button class="btn-back" id="dyn-back" onclick="qBack()">← Back</button>
+      <button class="btn-next" id="dyn-next" onclick="qNext()" disabled>Continue →</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN RESULTS
+  ═══════════════════════════════════════════ -->
+  <section class="screen" id="screen-results">
+    <div id="result-tag-el" class="result-tag"></div>
+    <h2 class="result-headline" id="result-headline"></h2>
+    <p class="result-summary" id="result-summary"></p>
+
+    <div class="score-block">
+      <div class="score-number" id="result-score-num"></div>
+      <div class="score-label">AI Placement Score</div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-fill" id="result-score-bar" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="findings-section">
+      <div class="findings-title">What this diagnostic found</div>
+      <div id="findings-list"></div>
+    </div>
+
+    <div class="recommendation-box">
+      <div class="rec-label">Your Next Step</div>
+      <div class="rec-headline" id="rec-headline"></div>
+      <div class="rec-body" id="rec-body"></div>
+    </div>
+
+    <div class="cta-section">
+      <div class="cta-headline">The problem isn't AI.<br/>It was always a systems problem.</div>
+      <p class="cta-sub">Most founders who go through this diagnostic find the same thing. If this showed you where the friction lives, the audit gives you the full map to fix it.</p>
+      <div class="cta-buttons">
+        <a href="https://theaiminimalist.co" class="btn-primary" target="_blank">Book the AI Audit →</a>
+        <button class="btn-secondary" onclick="restartDiagnostic()">Run It Again</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* ─── State ─── */
+const answers = {
+  q1: null, q1other: '', q2: null, q3: null,
+  wastes: [], hours: 5,
+  q7: null, q8: null, q9: null, q10: null,
+  q11: '', q12: null, q13: null,
+  q14: null, q15: null, selfScore: 3
+};
+
+let currentQIdx = 0;
+
+/* ─── Question Definitions ─── */
+const ALL_QUESTIONS = [
+  // ── Step 1 ──
+  {
+    id: 'q1',
+    step: 1,
+    stepTitle: 'Map the System as It Actually Exists',
+    insightHTML: '<strong>You are not mapping tasks.</strong> You are mapping: trigger → input → transformation → output → decision point → next destination.',
+    text: 'Which workflow do you want to run through this diagnostic?',
+    type: 'options',
+    answerKey: 'q1',
+    options: [
+      { value: 'New lead intake',    label: 'New lead intake' },
+      { value: 'Client onboarding',  label: 'Client onboarding' },
+      { value: 'Proposal creation',  label: 'Proposal creation' },
+      { value: 'Delivery process',   label: 'Delivery process' },
+      { value: 'Reporting',          label: 'Reporting' },
+      { value: 'Billing',            label: 'Billing' },
+      { value: 'Other',              label: 'Other (I\'ll describe it)' }
+    ]
+  },
+  {
+    id: 'q1other',
+    step: 1,
+    stepTitle: 'Map the System as It Actually Exists',
+    text: 'Describe the workflow in one sentence:',
+    type: 'textarea',
+    answerKey: 'q1other',
+    placeholder: 'e.g. How we move from a closed deal to a delivered project...',
+    minLength: 5,
+    conditional: () => answers.q1 === 'Other'
+  },
+  {
+    id: 'q2',
+    step: 1,
+    stepTitle: 'Map the System as It Actually Exists',
+    text: 'Has this workflow ever been formally documented — written out, step by step?',
+    type: 'options',
+    answerKey: 'q2',
+    options: [
+      { value: 'Yes — it is documented',    label: 'Yes — it\'s documented somewhere' },
+      { value: 'Partially documented',       label: 'Partially — some parts exist, others are in my head' },
+      { value: 'No — it lives in my head',  label: 'No — it mostly lives in my head' }
+    ]
+  },
+  {
+    id: 'q3',
+    step: 1,
+    stepTitle: 'Map the System as It Actually Exists',
+    text: 'If one key person left tomorrow, would this process still function?',
+    type: 'options',
+    answerKey: 'q3',
+    options: [
+      { value: 'Yes — documented and transferable', label: 'Yes — it\'s documented and transferable' },
+      { value: 'Mostly — but some things would break', label: 'Mostly — but some things would slip' },
+      { value: 'No — it would break',               label: 'No — it would break significantly' },
+      { value: 'I am that person',                  label: 'I am that person' }
+    ]
+  },
+  // ── Step 2 ──
+  {
+    id: 'wastes',
+    step: 2,
+    stepTitle: 'Identify Structural Waste',
+    insightHTML: '<strong>Target zone:</strong> Tasks that are tedious — not because they require skill, but because of volume, copy-pasting, or manual entry. That\'s where AI belongs.',
+    text: 'Check every type of waste you recognize in your chosen workflow: (select all that apply)',
+    type: 'checkboxes',
+    answerKey: 'wastes',
+    options: [
+      { id: 'waste-overcreation',   label: '<strong>Overcreation</strong> — creating reports, docs, or outputs no one uses' },
+      { id: 'waste-waiting',        label: '<strong>Decision latency</strong> — leads or projects sitting idle waiting for approval' },
+      { id: 'waste-transport',      label: '<strong>Data movement</strong> — copy-pasting between tools, manual CRM updates, email-to-spreadsheet' },
+      { id: 'waste-motion',         label: '<strong>Tool/context switching</strong> — checking Slack, email, project board to gather basic context' },
+      { id: 'waste-overengineering',label: '<strong>Overengineering</strong> — processes that are more complex than the outcome they produce' },
+      { id: 'waste-backlog',        label: '<strong>Backlog/WIP</strong> — unreviewed leads, unread emails, unfinalized documents piling up' },
+      { id: 'waste-rework',         label: '<strong>Rework/errors</strong> — incorrect entries, misclassified data, outputs that need heavy editing' }
+    ]
+  },
+  {
+    id: 'hours',
+    step: 2,
+    stepTitle: 'Identify Structural Waste',
+    text: 'Roughly how many hours per week does your team spend on manual, repetitive digital work in this workflow?',
+    type: 'slider',
+    answerKey: 'hours',
+    min: 1, max: 40, defaultVal: 5,
+    displaySuffix: ' hrs/week',
+    labels: ['1 hr', '20 hrs', '40+ hrs']
+  },
+  {
+    id: 'q7',
+    step: 2,
+    stepTitle: 'Identify Structural Waste',
+    text: 'In this workflow, are there steps that only one person knows how to execute?',
+    type: 'options',
+    answerKey: 'q7',
+    options: [
+      { value: 'Yes — multiple steps',      label: 'Yes — multiple steps depend on one person' },
+      { value: 'Yes — one or two steps',    label: 'Yes — one or two steps' },
+      { value: 'No — mostly transferable',  label: 'No — it\'s mostly transferable' }
+    ]
+  },
+  // ── Step 3 ──
+  {
+    id: 'q8',
+    step: 3,
+    stepTitle: 'Apply the AI Placement Filter',
+    insightHTML: '<strong>The question:</strong> "Is this something I could train someone to look at, compile, and hand back to me — so I have the best possible data to make the final call, without doing the busy work myself?" If yes, AI belongs there.',
+    text: 'The New Hire Test — Think of the most time-consuming step in your workflow. Could you train a new hire to execute it within one week?',
+    type: 'options',
+    answerKey: 'q8',
+    options: [
+      { value: 'Yes easily',                   label: 'Yes — easily. It\'s mechanical and repeatable.' },
+      { value: 'Yes with effort',              label: 'Yes — but it would take some time to explain the nuances.' },
+      { value: 'No — requires deep judgment', label: 'No — it requires deep context and judgment I can\'t easily transfer.' }
+    ]
+  },
+  {
+    id: 'q9',
+    step: 3,
+    stepTitle: 'Apply the AI Placement Filter',
+    text: 'The "What Breaks?" Test — If that step goes wrong, what\'s the consequence?',
+    type: 'options',
+    answerKey: 'q9',
+    options: [
+      { value: 'Minor inconvenience',        label: 'Minor inconvenience — easy to catch and fix' },
+      { value: 'Operational friction',       label: 'Operational friction — slows things down but recoverable' },
+      { value: 'Client or revenue impact',  label: 'Client relationship or revenue — high stakes, hard to reverse' }
+    ]
+  },
+  {
+    id: 'q10',
+    step: 3,
+    stepTitle: 'Apply the AI Placement Filter',
+    text: 'How is AI currently being used in this workflow (if at all)?',
+    type: 'options',
+    answerKey: 'q10',
+    options: [
+      { value: 'Not used',            label: 'Not used at all' },
+      { value: 'Copy-paste workflow', label: 'Copy-pasting into ChatGPT manually — no real system' },
+      { value: 'Some automation',     label: 'Some automation exists, but it\'s inconsistent' },
+      { value: 'Structured system',   label: 'Structured — AI is connected to inputs and outputs properly' }
+    ]
+  },
+  // ── Step 4 ──
+  {
+    id: 'q11',
+    step: 4,
+    stepTitle: 'Define the Output Before You Implement',
+    insightHTML: '<strong>Vague:</strong> "AI handles our lead intake."<br/><strong>Defined:</strong> "AI logs every inbound lead into our CRM, categorizes it into 5 types, drafts a first-touch response, and flags high-priority ones — before it hits my queue."',
+    text: 'If AI were handling the step you identified, what would a good output look like? Describe it as specifically as you can.',
+    type: 'textarea',
+    answerKey: 'q11',
+    placeholder: 'e.g. A tagged, categorized summary of the lead with the inquiry type, source, and a drafted first response — ready for me to review before sending.',
+    minLength: 10
+  },
+  {
+    id: 'q12',
+    step: 4,
+    stepTitle: 'Define the Output Before You Implement',
+    text: 'Are you asking AI to summarize or to conclude?',
+    type: 'options',
+    answerKey: 'q12',
+    options: [
+      { value: 'Summarize', label: 'Summarize — compile data, organize info, prep a synopsis. I read it. I decide.' },
+      { value: 'Conclude',  label: 'Conclude — recommend an action or flag something as not worth pursuing.' },
+      { value: 'Both',      label: 'Both — but with human checkpoints before any conclusion is acted on.' }
+    ]
+  },
+  {
+    id: 'q13',
+    step: 4,
+    stepTitle: 'Define the Output Before You Implement',
+    text: 'Does the output you described require AI to do multiple different things at once?',
+    type: 'options',
+    answerKey: 'q13',
+    options: [
+      { value: 'No — one clear thing', label: 'No — it\'s one clear, contained task' },
+      { value: '2-3 related tasks',    label: '2–3 closely related tasks that flow together' },
+      { value: '4+ tasks',             label: '4+ things — it\'s actually a multi-step process in itself' }
+    ]
+  },
+  // ── Step 5 ──
+  {
+    id: 'q14',
+    step: 5,
+    stepTitle: 'Validate Simplicity',
+    insightHTML: '<strong>The three failure modes to avoid:</strong> The copy-paste workflow (you\'re still in the middle), the fragmented team (everyone experiments alone), and adoption without architecture (AI usage is not AI infrastructure).',
+    text: 'If AI were placed where you identified, would the manual handoff be gone — or would you still be stitching things together manually?',
+    type: 'options',
+    answerKey: 'q14',
+    options: [
+      { value: 'Gone — AI connects input to output',      label: 'Gone — AI would connect directly to the input and output' },
+      { value: 'Mostly gone — small manual steps remain', label: 'Mostly gone — a small manual step or two would remain' },
+      { value: 'Still stitching manually',                label: 'Still stitching — I\'d still be copy-pasting or checking in manually' }
+    ]
+  },
+  {
+    id: 'q15',
+    step: 5,
+    stepTitle: 'Validate Simplicity',
+    text: 'Could you explain how AI fits into this workflow clearly in under 5 minutes to someone on your team?',
+    type: 'options',
+    answerKey: 'q15',
+    options: [
+      { value: 'Yes — clearly',            label: 'Yes — I could explain it clearly right now' },
+      { value: 'Mostly — with some effort', label: 'Mostly — it would take some thought to lay it out' },
+      { value: 'No — still fuzzy',          label: 'No — I\'m still figuring out how it all connects' }
+    ]
+  },
+  {
+    id: 'selfScore',
+    step: 5,
+    stepTitle: 'Validate Simplicity',
+    text: 'Give yourself an honest AI Placement Score for this workflow. Rate it 1–5:',
+    type: 'score-slider',
+    answerKey: 'selfScore',
+    defaultVal: 3
+  }
+];
+
+/* ─── Build active sequence (handles conditional questions) ─── */
+function getSequence() {
+  return ALL_QUESTIONS.filter(q => !q.conditional || q.conditional());
+}
+
+/* ─── Navigation ─── */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startDiagnostic() {
+  currentQIdx = 0;
+  renderQuestion(currentQIdx);
+  showScreen('screen-question');
+  document.getElementById('progress-label').classList.add('visible');
+}
+
+function goToIntro() {
+  showScreen('screen-intro');
+  document.getElementById('progress-fill').style.width = '0%';
+  document.getElementById('progress-label').classList.remove('visible');
+  document.getElementById('progress-label').textContent = '';
+}
+
+function qBack() {
+  if (currentQIdx === 0) {
+    goToIntro();
+  } else {
+    currentQIdx--;
+    // Skip conditional questions going backwards if they no longer apply
+    const seq = getSequence();
+    renderQuestion(currentQIdx);
+  }
+}
+
+function qNext() {
+  const seq = getSequence();
+  if (currentQIdx >= seq.length - 1) {
+    showResults();
+  } else {
+    currentQIdx++;
+    // Rebuild sequence in case q1 answer changed (e.g. switching to/from Other)
+    renderQuestion(currentQIdx);
+  }
+}
+
+/* ─── Render a question by index ─── */
+function renderQuestion(idx) {
+  const seq = getSequence();
+  const q = seq[idx];
+  const total = seq.length;
+
+  // Meta row
+  document.getElementById('dyn-step-label').textContent = `Step ${q.step} of 5`;
+  document.getElementById('dyn-q-count').textContent = `${idx + 1} of ${total}`;
+
+  // Step title
+  document.getElementById('dyn-step-title').textContent = q.stepTitle;
+
+  // Insight box — show on first question of each new step
+  const isFirstInStep = idx === 0 || seq[idx - 1].step !== q.step;
+  const insightEl = document.getElementById('dyn-insight');
+  if (isFirstInStep && q.insightHTML) {
+    insightEl.innerHTML = q.insightHTML;
+    insightEl.style.display = 'block';
+  } else {
+    insightEl.style.display = 'none';
+  }
+
+  // Question text
+  document.getElementById('dyn-q-text').textContent = q.text;
+
+  // Render input
+  renderInput(q);
+
+  // Update progress bar
+  document.getElementById('progress-fill').style.width = ((idx + 1) / total * 100) + '%';
+  document.getElementById('progress-label').textContent = `${idx + 1} of ${total}`;
+
+  // Next button text
+  const nextBtn = document.getElementById('dyn-next');
+  nextBtn.textContent = idx === total - 1 ? 'See My Results →' : 'Continue →';
+
+  // Validate next button
+  validateNext(q);
+}
+
+/* ─── Render input by question type ─── */
+function renderInput(q) {
+  const area = document.getElementById('dyn-input');
+  area.innerHTML = '';
+
+  switch (q.type) {
+
+    case 'options': {
+      const div = document.createElement('div');
+      div.className = 'options';
+      q.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt.label;
+        if (answers[q.answerKey] === opt.value) btn.classList.add('selected');
+        btn.onclick = () => {
+          div.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          answers[q.answerKey] = opt.value;
+          // If q1 changed, the sequence may need updating (Other conditional)
+          validateNext(q);
+          // Auto-advance on selection after short delay
+          setTimeout(() => {
+            if (!document.getElementById('dyn-next').disabled) qNext();
+          }, 300);
+        };
+        div.appendChild(btn);
+      });
+      area.appendChild(div);
+      break;
+    }
+
+    case 'checkboxes': {
+      const div = document.createElement('div');
+      div.className = 'checkbox-group';
+      q.options.forEach(opt => {
+        const label = document.createElement('label');
+        label.className = 'checkbox-item' + (answers.wastes.includes(opt.id) ? ' checked' : '');
+        label.innerHTML = `
+          <input type="checkbox" ${answers.wastes.includes(opt.id) ? 'checked' : ''}>
+          <span class="checkbox-box">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+              <path d="M1 4L3.5 6.5L9 1" stroke="#0f0f0f" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="checkbox-label">${opt.label}</span>
+        `;
+        label.onclick = (e) => {
+          e.preventDefault();
+          label.classList.toggle('checked');
+          const isChecked = label.classList.contains('checked');
+          if (isChecked && !answers.wastes.includes(opt.id)) {
+            answers.wastes.push(opt.id);
+          } else {
+            answers.wastes = answers.wastes.filter(w => w !== opt.id);
+          }
+          validateNext(q);
+        };
+        div.appendChild(label);
+      });
+      area.appendChild(div);
+      break;
+    }
+
+    case 'slider': {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'slider-wrapper';
+      const displayId = `slider-display-${q.id}`;
+      const sliderId = `slider-input-${q.id}`;
+      const currentVal = answers[q.answerKey] || q.defaultVal;
+      wrapper.innerHTML = `
+        <div class="slider-value-display" id="${displayId}">${currentVal}${q.displaySuffix}</div>
+        <input type="range" class="slider-input" id="${sliderId}"
+          min="${q.min}" max="${q.max}" value="${currentVal}">
+        <div class="slider-labels">
+          <span>${q.labels[0]}</span><span>${q.labels[1]}</span><span>${q.labels[2]}</span>
+        </div>
+      `;
+      area.appendChild(wrapper);
+      const sliderEl = document.getElementById(sliderId);
+      sliderEl.oninput = () => {
+        document.getElementById(displayId).textContent = sliderEl.value + q.displaySuffix;
+        answers[q.answerKey] = parseInt(sliderEl.value);
+        validateNext(q);
+      };
+      // Sliders are always valid
+      validateNext(q);
+      break;
+    }
+
+    case 'score-slider': {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'slider-wrapper';
+      const currentVal = answers.selfScore || 3;
+      wrapper.innerHTML = `
+        <div class="slider-value-display" id="score-display-dyn">${currentVal} / 5</div>
+        <input type="range" class="slider-input" id="score-slider-dyn" min="1" max="5" value="${currentVal}">
+        <div class="slider-labels">
+          <span>1 — Fully manual</span>
+          <span>3 — Partially structured</span>
+          <span>5 — Fully optimized</span>
+        </div>
+        <div id="score-description"></div>
+      `;
+      area.appendChild(wrapper);
+      const sliderEl = document.getElementById('score-slider-dyn');
+      sliderEl.oninput = () => {
+        updateScoreLabel(sliderEl.value);
+        validateNext(q);
+      };
+      updateScoreLabel(currentVal);
+      validateNext(q);
+      break;
+    }
+
+    case 'textarea': {
+      const ta = document.createElement('textarea');
+      ta.className = 'text-input';
+      ta.placeholder = q.placeholder || '';
+      ta.value = answers[q.answerKey] || '';
+      ta.oninput = () => {
+        answers[q.answerKey] = ta.value;
+        validateNext(q);
+      };
+      area.appendChild(ta);
+      break;
+    }
+  }
+}
+
+/* ─── Validate next button for current question ─── */
+function validateNext(q) {
+  const nextBtn = document.getElementById('dyn-next');
+  let valid = false;
+
+  switch (q.type) {
+    case 'options':
+      valid = answers[q.answerKey] !== null;
+      break;
+    case 'checkboxes':
+      valid = answers.wastes.length > 0;
+      break;
+    case 'slider':
+    case 'score-slider':
+      valid = true;
+      break;
+    case 'textarea':
+      valid = (answers[q.answerKey] || '').trim().length >= (q.minLength || 0);
+      break;
+  }
+
+  nextBtn.disabled = !valid;
+}
+
+/* ─── Score slider label ─── */
+function updateScoreLabel(val) {
+  const labels = {
+    1: "Fully manual, undocumented, person-dependent. AI isn't the first fix here.",
+    2: 'Mostly manual with some informal patterns. Structure is the priority.',
+    3: 'Documented and partially structured, but inconsistent. Good starting point.',
+    4: "Mostly structured. AI can accelerate what's already working.",
+    5: 'Structured, mechanical work removed, judgment preserved. Ready to scale.'
+  };
+  const dispEl = document.getElementById('score-display-dyn');
+  const descEl = document.getElementById('score-description');
+  if (dispEl) dispEl.textContent = val + ' / 5';
+  if (descEl) descEl.textContent = labels[val] || '';
+  answers.selfScore = parseInt(val);
+}
+
+/* ─── Score Calculation ─── */
+function calculateScore() {
+  let score = 0;
+  let maxScore = 0;
+
+  maxScore += 3;
+  if (answers.q2 === 'Yes — it is documented') score += 3;
+  else if (answers.q2 === 'Partially documented') score += 1;
+
+  maxScore += 3;
+  if (answers.q3 === 'Yes — documented and transferable') score += 3;
+  else if (answers.q3 === 'Mostly — but some things would break') score += 1;
+
+  maxScore += 3;
+  const wasteCount = answers.wastes.length;
+  if (wasteCount === 0) score += 3;
+  else if (wasteCount <= 2) score += 2;
+  else if (wasteCount <= 4) score += 1;
+
+  maxScore += 3;
+  if (answers.hours <= 5) score += 3;
+  else if (answers.hours <= 15) score += 2;
+  else if (answers.hours <= 25) score += 1;
+
+  maxScore += 3;
+  if (answers.q8 === 'Yes easily') score += 3;
+  else if (answers.q8 === 'Yes with effort') score += 2;
+
+  maxScore += 3;
+  if (answers.q9 === 'Minor inconvenience') score += 3;
+  else if (answers.q9 === 'Operational friction') score += 2;
+  else if (answers.q9 === 'Client or revenue impact') score += 1;
+
+  maxScore += 3;
+  if (answers.q10 === 'Structured system') score += 3;
+  else if (answers.q10 === 'Some automation') score += 2;
+  else if (answers.q10 === 'Copy-paste workflow') score += 1;
+
+  maxScore += 3;
+  if (answers.q14 === 'Gone — AI connects input to output') score += 3;
+  else if (answers.q14 === 'Mostly gone — small manual steps remain') score += 2;
+  else if (answers.q14 === 'Still stitching manually') score += 1;
+
+  maxScore += 2;
+  if (answers.q15 === 'Yes — clearly') score += 2;
+  else if (answers.q15 === 'Mostly — with some effort') score += 1;
+
+  maxScore += 5;
+  score += answers.selfScore;
+
+  return Math.round((score / maxScore) * 100);
+}
+
+/* ─── Results ─── */
+function showResults() {
+  const pct = calculateScore();
+  const workflow = answers.q1 === 'Other'
+    ? (answers.q1other || 'your workflow')
+    : (answers.q1 || 'your workflow');
+
+  let tagClass, tagText, headline, summary, recHeadline, recBody;
+
+  if (pct < 40) {
+    tagClass = 'tag-systems';
+    tagText = 'Systems Problem First';
+    headline = "You don't have an AI problem. You have a systems problem.";
+    summary = `Your ${workflow} workflow has real structural gaps that AI won't fix — and could make worse. The friction you're feeling isn't from the wrong tools. It's from accumulated activity that was never formalized into a system. The diagnostic showed you where the cracks are. The next step is building the structure before layering AI on top of it.`;
+    recHeadline = 'Map and document before you automate.';
+    recBody = "Start by getting this workflow on paper. Not to optimize — to expose. Once you can explain it clearly on one page, you'll see exactly where waste lives and where AI actually belongs. Placing AI into an undocumented process creates complexity, not leverage.";
+  } else if (pct < 70) {
+    tagClass = 'tag-mixed';
+    tagText = 'Partially Ready';
+    headline = "The bones are there. The structure isn't.";
+    summary = `Your ${workflow} workflow has identifiable patterns — which means AI can attach to something. But there are still fragility points: steps that depend on specific people, outputs that aren't clearly defined, or manual stitching that would remain even after implementation. You're closer than most, but placing AI now without addressing those gaps will create inconsistency, not efficiency.`;
+    recHeadline = 'One workflow, one fix, defined output.';
+    recBody = "Pick the single step in this workflow that passes the New Hire Test — trainable within a week, low consequence if wrong. Define the output in one sentence: what lands in your hands, in what format, by when. Start there. Get that working reliably before expanding.";
+  } else {
+    tagClass = 'tag-ready';
+    tagText = 'AI-Ready';
+    headline = 'Your workflow is ready for AI placement.';
+    summary = `Your ${workflow} workflow has the structural clarity that AI requires to add real leverage — not just activity. You have documented steps, defined outputs, and a clear boundary between mechanical execution and human judgment. This is the foundation. What you do next determines whether AI becomes infrastructure or just another experiment.`;
+    recHeadline = 'Build the connection, validate the simplicity.';
+    recBody = "The question now isn't whether AI belongs — it's whether the implementation actually removes manual stitching. Connect AI to the input directly. Define the output precisely. Walk through the process after implementation and ask: is it genuinely simpler? If yes, it's working. If not, something in the architecture needs to change.";
+  }
+
+  const tagEl = document.getElementById('result-tag-el');
+  tagEl.className = 'result-tag ' + tagClass;
+  tagEl.textContent = tagText;
+  document.getElementById('result-headline').textContent = headline;
+  document.getElementById('result-summary').textContent = summary;
+  document.getElementById('result-score-num').textContent = pct + '%';
+  document.getElementById('rec-headline').textContent = recHeadline;
+  document.getElementById('rec-body').textContent = recBody;
+
+  const findings = buildFindings(pct);
+  document.getElementById('findings-list').innerHTML = findings.map(f => `
+    <div class="finding-item">
+      <div class="finding-icon">${f.icon}</div>
+      <div class="finding-content">
+        <div class="finding-label">${f.label}</div>
+        <div class="finding-text">${f.text}</div>
+      </div>
+    </div>
+  `).join('');
+
+  showScreen('screen-results');
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('progress-label').textContent = 'Complete';
+
+  setTimeout(() => {
+    document.getElementById('result-score-bar').style.width = pct + '%';
+  }, 300);
+}
+
+function buildFindings(pct) {
+  const findings = [];
+
+  if (answers.q2 === 'No — it lives in my head') {
+    findings.push({ icon: '⚠️', label: 'No documented workflow', text: "This process exists only in someone's head. AI cannot attach to undocumented activity — it needs defined structure." });
+  } else if (answers.q2 === 'Partially documented') {
+    findings.push({ icon: '⚡', label: 'Partially documented', text: 'Some structure exists but gaps remain. Document the full flow before building automation around it.' });
+  } else {
+    findings.push({ icon: '✅', label: 'Documented workflow', text: 'This process is written out — a critical foundation for any AI implementation.' });
+  }
+
+  const wasteCount = answers.wastes.length;
+  if (wasteCount >= 5) {
+    findings.push({ icon: '🔴', label: wasteCount + ' waste types identified', text: 'Significant structural waste found. This workflow has more friction than most — which means higher leverage when addressed correctly.' });
+  } else if (wasteCount >= 3) {
+    findings.push({ icon: '🟡', label: wasteCount + ' waste types identified', text: 'Multiple waste types present. Prioritize data movement and rework — those are the highest-value targets for AI.' });
+  } else if (wasteCount > 0) {
+    findings.push({ icon: '🟢', label: wasteCount + ' waste type(s) identified', text: 'Minimal waste — your workflow is relatively lean. The opportunity for AI is targeted, not broad.' });
+  }
+
+  if (answers.q8 === 'Yes easily') {
+    findings.push({ icon: '✅', label: 'Automation candidate confirmed', text: "This step is trainable within a week — which means it's mechanical, repeatable, and a strong candidate for AI." });
+  } else if (answers.q8 === 'No — requires deep judgment') {
+    findings.push({ icon: '🛑', label: 'Judgment-dependent step', text: 'This step requires deep context. AI can support it, but a human needs to remain in the decision seat.' });
+  }
+
+  if (answers.q13 === '4+ tasks') {
+    findings.push({ icon: '⚠️', label: 'Output needs to be broken down', text: 'The output you described requires AI to do 4+ things simultaneously. Go back to Step 1 and break this into smaller, individually filtered pieces.' });
+  } else if (answers.q11 && answers.q11.length > 20) {
+    findings.push({ icon: '✅', label: 'Output defined', text: "You've identified a specific, containable output. That's the most important decision you can make before implementation." });
+  }
+
+  if (answers.q14 === 'Still stitching manually') {
+    findings.push({ icon: '🔴', label: 'Manual stitching remains', text: "If you're still copy-pasting to make AI work, you haven't built a system — you've added a step. This needs to be resolved before going further." });
+  } else if (answers.q14 === 'Gone — AI connects input to output') {
+    findings.push({ icon: '✅', label: 'True automation path identified', text: "The manual handoff is removed. AI connects directly from input to output. That's the definition of leverage." });
+  }
+
+  return findings.slice(0, 5);
+}
+
+/* ─── Restart ─── */
+function restartDiagnostic() {
+  Object.assign(answers, {
+    q1: null, q1other: '', q2: null, q3: null,
+    wastes: [], hours: 5,
+    q7: null, q8: null, q9: null, q10: null,
+    q11: '', q12: null, q13: null,
+    q14: null, q15: null, selfScore: 3
+  });
+  currentQIdx = 0;
+  goToIntro();
+}
+</script>
+</body>
+</html>
