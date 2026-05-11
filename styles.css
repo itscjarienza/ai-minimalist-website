@@ -10,8 +10,6 @@
 
 :root {
   --warm-cream: #ede2c7;
-  --cream-yellow: #f0f8be;
-  --light-grey: #ededed;
   --mid-grey: #5b5b5b;
   --dark: #242424;
   --font-heading: 'Fraunces', serif;
@@ -27,7 +25,7 @@ body {
   font-size: 15px;
   line-height: 1.7;
   color: var(--dark);
-  background: var(--warm-cream);
+  background: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -50,7 +48,7 @@ img, svg { display: block; max-width: 100%; }
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  background: var(--warm-cream);
+  background: #ffffff;
   border-bottom: 1px solid rgba(36,36,36,0.2);
 }
 
@@ -121,7 +119,7 @@ img, svg { display: block; max-width: 100%; }
   position: fixed;
   inset: 0;
   z-index: 99;
-  background: var(--warm-cream);
+  background: #ffffff;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -230,7 +228,7 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--font-body);
   font-weight: 300;
   font-size: 15px;
-  background: var(--warm-cream);
+  background: #ffffff;
   border: 1px solid var(--dark);
   border-right: none;
   border-radius: 0;
@@ -257,7 +255,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .form-input-yellow {
-  background: var(--cream-yellow);
+  background: #ffffff;
   border-color: var(--dark);
   border-right: none;
 }
@@ -287,10 +285,10 @@ img, svg { display: block; max-width: 100%; }
 .form-confirm.visible { display: block; }
 
 /* ── SECTION BACKGROUNDS ── */
-.bg-warm    { background: var(--warm-cream); color: var(--dark); }
+.bg-warm    { background: #ffffff; color: var(--dark); }
 .bg-dark    { background: var(--dark); color: var(--warm-cream); }
-.bg-grey    { background: var(--light-grey); color: var(--dark); }
-.bg-yellow  { background: var(--cream-yellow); color: var(--dark); }
+.bg-grey    { background: #f5f5f3; color: var(--dark); }
+.bg-yellow  { background: #f5f5f3; color: var(--dark); }
 
 /* ── SECTION LABEL ── */
 .section-label {
@@ -379,7 +377,7 @@ img, svg { display: block; max-width: 100%; }
   padding-top: var(--nav-height);
   display: flex;
   align-items: center;
-  background: var(--warm-cream);
+  background: #ffffff;
 }
 
 .hero-inner {
@@ -641,7 +639,7 @@ img, svg { display: block; max-width: 100%; }
 .offer-card {
   padding: 48px 32px;
   border-right: 1px solid rgba(36,36,36,0.15);
-  background: var(--warm-cream);
+  background: #ffffff;
 }
 
 .offer-card:last-child { border-right: none; }
@@ -736,7 +734,7 @@ img, svg { display: block; max-width: 100%; }
 /* ── METHODOLOGY ── */
 .method-hero {
   padding: calc(var(--nav-height) + 80px) 32px 80px;
-  background: var(--warm-cream);
+  background: #ffffff;
 }
 
 .method-hero-inner {
@@ -819,7 +817,7 @@ img, svg { display: block; max-width: 100%; }
 /* ── ABOUT ── */
 .about-hero {
   padding: calc(var(--nav-height) + 80px) 32px 64px;
-  background: var(--warm-cream);
+  background: #ffffff;
 }
 
 .about-hero-inner { max-width: 840px; margin: 0 auto; }
@@ -951,7 +949,7 @@ img, svg { display: block; max-width: 100%; }
 /* ── WORK WITH ME ── */
 .work-hero {
   padding: calc(var(--nav-height) + 80px) 32px 80px;
-  background: var(--warm-cream);
+  background: #ffffff;
 }
 
 .work-hero-inner { max-width: 840px; margin: 0 auto; }
@@ -1025,7 +1023,7 @@ img, svg { display: block; max-width: 100%; }
 
 /* ── QUALIFIER SECTION ── */
 .qualifier-section {
-  background: var(--cream-yellow);
+  background: #f5f5f3;
   padding: 80px 0;
 }
 
@@ -1051,7 +1049,7 @@ img, svg { display: block; max-width: 100%; }
 .qualifier-modal.active { display: flex; }
 
 .qualifier-modal-box {
-  background: var(--warm-cream);
+  background: #ffffff;
   padding: 64px;
   max-width: 560px;
   width: 100%;
@@ -1093,7 +1091,7 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--font-body);
   font-weight: 300;
   font-size: 15px;
-  background: var(--warm-cream);
+  background: #ffffff;
   border: 1px solid rgba(36,36,36,0.4);
   border-radius: 0;
   color: var(--dark);
@@ -1172,7 +1170,7 @@ img, svg { display: block; max-width: 100%; }
 
 /* ── METHODOLOGY CTA SECTIONS ── */
 .methodology-lead-cta {
-  background: var(--cream-yellow);
+  background: #f5f5f3;
   padding: 80px 0;
 }
 
