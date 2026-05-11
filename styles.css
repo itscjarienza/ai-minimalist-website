@@ -388,7 +388,7 @@ img, svg { display: block; max-width: 100%; }
   padding-top: var(--nav-height);
   display: flex;
   align-items: center;
-  background: var(--dark);
+  background: var(--warm-cream);
 }
 
 .hero-inner {
@@ -410,6 +410,7 @@ img, svg { display: block; max-width: 100%; }
   font-size: clamp(36px, 5vw, 48px);
   line-height: 1.05;
   margin-bottom: 16px;
+  color: var(--dark);
 }
 
 .hero-subheadline {
@@ -417,7 +418,7 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 400;
   font-size: clamp(20px, 3vw, 32px);
   line-height: 1.2;
-  color: var(--warm-cream);
+  color: var(--dark);
   opacity: 0.6;
   margin-bottom: 24px;
 }
@@ -466,8 +467,8 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--font-body);
   font-weight: 300;
   font-size: 13px;
-  color: var(--warm-cream);
-  opacity: 0.5;
+  color: var(--dark);
+  opacity: 0.55;
 }
 
 .hero-illo {
@@ -478,7 +479,7 @@ img, svg { display: block; max-width: 100%; }
 
 .hero-divider {
   height: 1px;
-  background: var(--warm-cream);
+  background: var(--dark);
   opacity: 0.15;
 }
 
@@ -750,7 +751,7 @@ img, svg { display: block; max-width: 100%; }
 /* ── METHODOLOGY ── */
 .method-hero {
   padding: calc(var(--nav-height) + 80px) 32px 80px;
-  background: var(--dark);
+  background: var(--warm-cream);
 }
 
 .method-hero-inner {
@@ -834,7 +835,7 @@ img, svg { display: block; max-width: 100%; }
 /* ── ABOUT ── */
 .about-hero {
   padding: calc(var(--nav-height) + 80px) 32px 64px;
-  background: var(--dark);
+  background: var(--warm-cream);
 }
 
 .about-hero-inner { max-width: 840px; margin: 0 auto; }
@@ -967,7 +968,7 @@ img, svg { display: block; max-width: 100%; }
 /* ── WORK WITH ME ── */
 .work-hero {
   padding: calc(var(--nav-height) + 80px) 32px 80px;
-  background: var(--dark);
+  background: var(--warm-cream);
 }
 
 .work-hero-inner { max-width: 840px; margin: 0 auto; }
