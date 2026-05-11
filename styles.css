@@ -984,6 +984,38 @@ img, svg { display: block; max-width: 100%; }
   opacity: 1;
 }
 
+/* ── LIGHT-BACKGROUND LABEL & UTILITY OVERRIDES ── */
+/* These classes default to cream (for dark sections).
+   Override to dark wherever they appear on light backgrounds. */
+.hero,
+.about-hero,
+.method-hero,
+.work-hero { color: var(--dark); }
+
+.bg-warm .section-label,
+.bg-grey .section-label,
+.hero .section-label,
+.about-hero .section-label,
+.method-hero .section-label,
+.work-hero .section-label { color: var(--dark); opacity: 0.45; }
+
+.bg-warm .method-step-label,
+.bg-grey .method-step-label { color: var(--dark); opacity: 0.45; }
+
+.bg-warm .story-block-label { color: var(--dark); opacity: 0.45; }
+
+.bg-warm .offer-stack-label,
+.bg-grey .offer-stack-label { color: var(--dark); opacity: 0.45; }
+
+.bg-warm .offer-stack-sub,
+.bg-grey .offer-stack-sub { color: var(--dark); opacity: 0.45; }
+
+.bg-warm .form-sub,
+.bg-grey .form-sub { color: var(--dark); opacity: 0.45; }
+
+.bg-warm .step-decorative-num,
+.bg-grey .step-decorative-num { color: var(--dark); }
+
 .philosophy-illo-break {
   padding: 64px 0;
   display: flex;
