@@ -35,4 +35,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.theaiminimalist.co/ai-consultant-for-small-business</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-05-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.theaiminimalist.co/what-does-an-ai-implementation-consultant-actually-do</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2026-05-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.theaiminimalist.co/is-ai-worth-it-for-small-businesses</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2026-05-11</lastmod>
+  </url>
 </urlset>
