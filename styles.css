@@ -79,6 +79,7 @@ img, svg { display: block; max-width: 100%; }
 .nav-cta {
   display: inline-flex;
   align-items: center;
+  margin-left: auto;
   height: 36px;
   padding: 0 20px;
   font-family: var(--font-body);
@@ -148,6 +149,7 @@ img, svg { display: block; max-width: 100%; }
   align-items: center;
   justify-content: center;
   gap: 40px;
+  overflow-y: auto;
 }
 
 .nav-overlay.active { display: flex; }

@@ -30,6 +30,10 @@ function initNav() {
       link.addEventListener('click', closeOverlay);
     });
 
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeOverlay();
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && overlay.classList.contains('active')) {
         closeOverlay();
