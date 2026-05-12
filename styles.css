@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a { color: inherit; text-decoration: none; }
-img, svg { display: block; max-width: 100%; }
+img, svg { display: block; max-width: 100%; height: auto; }
 
 /* ── NAVIGATION ── */
 .nav {
@@ -410,6 +410,7 @@ img, svg { display: block; max-width: 100%; }
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   padding-top: var(--nav-height);
   display: flex;
   align-items: center;
@@ -984,6 +985,31 @@ img, svg { display: block; max-width: 100%; }
   opacity: 1;
 }
 
+/* ── FULL-VIEWPORT SECTIONS ── */
+/* Every section fills the display — content-heavy ones simply grow past 100vh */
+section {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* ── SUBPAGE HERO FULL-VIEWPORT ── */
+.about-hero,
+.method-hero,
+.work-hero,
+.philosophy-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Newsletter page (uses <main>) */
+.newsletter-page {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
 /* ── LIGHT-BACKGROUND LABEL & UTILITY OVERRIDES ── */
 /* These classes default to cream (for dark sections).
    Override to dark wherever they appear on light backgrounds. */
@@ -1015,6 +1041,22 @@ img, svg { display: block; max-width: 100%; }
 
 .bg-warm .step-decorative-num,
 .bg-grey .step-decorative-num { color: var(--dark); }
+
+/* Step content on light backgrounds */
+.bg-warm .step-name,
+.bg-grey .step-name { color: var(--dark); }
+
+.bg-warm .step-desc,
+.bg-grey .step-desc { color: var(--mid-grey); opacity: 1; }
+
+.bg-warm .step-num,
+.bg-grey .step-num { color: var(--mid-grey); }
+
+.bg-warm .step-col,
+.bg-grey .step-col { border-right-color: rgba(36,36,36,0.1); }
+
+.bg-warm .step-col + .step-col,
+.bg-grey .step-col + .step-col { border-top-color: rgba(36,36,36,0.1); }
 
 .philosophy-illo-break {
   padding: 64px 0;
@@ -1268,6 +1310,8 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ── RESPONSIVE ── */
+
+/* ── 1024px — tablet landscape ── */
 @media (max-width: 1024px) {
   .hero-inner {
     grid-template-columns: 1fr;
@@ -1293,7 +1337,7 @@ img, svg { display: block; max-width: 100%; }
 
   .offer-stack-inner {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
   .about-story-grid {
@@ -1312,80 +1356,118 @@ img, svg { display: block; max-width: 100%; }
   .footer-copy { text-align: center; }
 }
 
+/* ── 768px — tablet portrait / large phone ── */
 @media (max-width: 768px) {
-  .problem-grid {
-    grid-template-columns: 1fr;
-  }
+  /* Reduce vertical section padding — use !important to override inline styles */
+  section { padding-top: 72px !important; padding-bottom: 72px !important; }
 
+  /* Hero sections preserve full-viewport centering */
+  .hero { padding: var(--nav-height) 24px 48px; }
+  .about-hero,
+  .method-hero,
+  .work-hero,
+  .philosophy-hero { padding: calc(var(--nav-height) + 48px) 24px 48px; }
+
+  /* Containers get narrower side padding */
+  .container, .container-narrow { padding: 0 20px; }
+
+  /* Problem grid stacks */
+  .problem-grid { grid-template-columns: 1fr; }
   .problem-col + .problem-col {
     border-left: none;
     border-top: 1px solid rgba(237,226,199,0.2);
   }
+  .problem-col { padding: 40px 24px; text-align: center; }
 
-  .problem-col { padding: 40px 32px; text-align: center; }
-
-  .steps-flow {
-    grid-template-columns: 1fr;
-  }
-
+  /* Steps stacks vertically */
+  .steps-flow { grid-template-columns: 1fr; }
   .step-col {
     border-right: none;
-    border-bottom: 1px solid var(--warm-taupe);
+    border-bottom: 1px solid rgba(237,226,199,0.2);
     text-align: left;
-    padding: 32px;
+    padding: 32px 24px;
   }
-
+  .bg-warm .step-col,
+  .bg-grey .step-col { border-bottom-color: rgba(36,36,36,0.1); }
   .step-col:last-child { border-bottom: none; }
+  .step-icon { margin: 0 0 16px; }
 
-  .step-icon { margin: 0 auto 16px; }
+  /* Offer cards stack */
+  .offer-cards { grid-template-columns: 1fr; }
+  .offer-card { border-right: none; border-bottom: 1px solid rgba(237,226,199,0.15); }
+  .offer-card:last-child { border-bottom: none; }
 
-  .offer-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .offer-card { border-right: none; }
-
-  .method-step-inner {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .method-step-reverse .method-step-inner {
-    direction: ltr;
-  }
-
+  /* Method steps */
+  .method-step-inner { grid-template-columns: 1fr; gap: 32px; }
+  .method-step-reverse .method-step-inner { direction: ltr; }
+  .method-step-illo { display: none; } /* hide illustrations on small screens */
   .step-decorative-num { font-size: 80px; }
 
-  .qualifier-modal-box { padding: 40px 32px; }
+  /* Offer stack dark */
+  .offer-stack-inner-dark { grid-template-columns: 1fr; }
 
-  .footer-nav { flex-wrap: wrap; gap: 16px; }
+  /* SVGs in hero scale to container */
+  .hero-illo svg { width: 100%; height: auto; max-width: 360px; }
 
-  .container, .container-narrow {
-    padding: 0 24px;
-  }
+  /* Qualifier */
+  .qualifier-modal-box { padding: 40px 24px; }
+  .qualifier-modal { padding: 20px; }
 
-  .offer-stack-inner-dark {
-    grid-template-columns: 1fr;
-  }
+  /* Footer */
+  .footer-nav { flex-wrap: wrap; gap: 12px; }
+
+  /* Newsletter CTA */
+  .newsletter-cta-inner { gap: 32px; }
 }
 
+/* ── 480px — phone ── */
 @media (max-width: 480px) {
-  .form-row {
-    flex-direction: column;
-  }
+  /* Further reduce vertical padding on phone */
+  section { padding-top: 56px !important; padding-bottom: 56px !important; }
 
+  .nav { padding: 0 20px; }
+  .site-footer { padding: 40px 20px 32px; }
+
+  .container, .container-narrow { padding: 0 16px; }
+
+  /* Form rows stack to column */
+  .form-row { flex-direction: column; }
   .form-row .form-input {
-    border-right: 1px solid var(--dark);
+    border-right: 1px solid rgba(237,226,199,0.4);
     border-bottom: none;
   }
-
   .form-row .form-input-dark {
     border-right: 1px solid var(--warm-cream);
     border-bottom: none;
   }
-
   .form-row .btn { width: 100%; }
 
-  .nav { padding: 0 24px; }
-  .site-footer { padding: 40px 24px 32px; }
+  /* Buttons full-width in hero */
+  .hero-ctas { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  /* Problem columns tighter */
+  .problem-col { padding: 32px 16px; }
+
+  /* Step columns tighter */
+  .step-col { padding: 28px 16px; }
+
+  /* Offer cards */
+  .offer-card { padding: 32px 20px; }
+
+  /* Hero illustration hidden on phone — content is primary */
+  .hero-illo { display: none; }
+
+  /* Typography floor — prevent too-small text */
+  .t-display { font-size: clamp(28px, 8vw, 40px); }
+  .t-heading-lg { font-size: clamp(22px, 6vw, 30px); }
+  .t-heading-md { font-size: clamp(20px, 5.5vw, 26px); }
+
+  /* Method step illustration already hidden at 768px */
+
+  /* Qualifier modal full height on phone */
+  .qualifier-modal { padding: 0; align-items: flex-end; }
+  .qualifier-modal-box { max-width: 100%; padding: 40px 20px 32px; max-height: 90vh; overflow-y: auto; }
+
+  /* Story blocks tighter */
+  .story-block { padding: 48px 0; }
 }
