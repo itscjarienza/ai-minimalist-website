@@ -33,7 +33,7 @@
     ]
   }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Epilogue:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Epilogue:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
@@ -41,33 +41,44 @@
 
 <div style="padding-top: 96px;"></div>
 
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <a href="/" class="nav-logo" aria-label="The AI Minimalist — Home">
-    <svg width="60" height="36" viewBox="0 0 120 72" fill="none" aria-hidden="true">
-      <line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/>
-      <circle cx="108" cy="36" r="3" fill="#242424"/>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="The AI Minimalist — Home">
+    <svg class="nav-mark" width="38" height="24" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+      <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <circle class="ring" cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.2" fill="none" opacity=".55"/>
+      <circle class="dot"  cx="108" cy="36" r="3" fill="#EDE2C7" opacity=".55"/>
     </svg>
     <span class="nav-wordmark">The AI Minimalist</span>
   </a>
-  <a href="/work-with-me" class="nav-cta">Book a Call</a>
+  <div class="nav-center nav-links">
+    <a href="about.html">About</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="philosophy.html">Philosophy</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="insights.html">Insights</a>
+  </div>
+  <div class="nav-right">
+    <a href="resources.html" class="nav-ghost">Resources</a>
+    <a href="work-with-me.html" class="nav-cta">Book a Call</a>
+  </div>
   <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
 <div class="nav-overlay" role="dialog" aria-label="Navigation menu">
   <button class="nav-overlay-close" aria-label="Close menu">Close</button>
-  <a href="/about">About</a>
-  <a href="/methodology">Methodology</a>
-  <a href="/philosophy">Philosophy</a>
-  <a href="/work-with-me">Work With Me</a>
-  <a href="/newsletter">Newsletter</a>
-  <a href="/ai-waste-audit">The Waste Checklist</a>
-  <a href="/insights">Insights</a>
-  <a href="/resources">Resources</a>
+  <a href="about.html">About</a>
+  <a href="methodology.html">Methodology</a>
+  <a href="philosophy.html">Philosophy</a>
+  <a href="work-with-me.html">Work With Me</a>
+  <a href="newsletter.html">Newsletter</a>
+  <a href="diagnostic.html">Free Diagnostic</a>
+  <a href="insights.html">Insights</a>
+  <a href="resources.html">Resources</a>
 </div>
 
 <main>
@@ -225,31 +236,31 @@
 
 </main>
 
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <svg width="40" height="24" viewBox="0 0 120 72" fill="none" aria-hidden="true">
-        <line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/>
-        <circle cx="108" cy="36" r="3" fill="#ede2c7"/>
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-logo">
+      <svg width="30" height="18" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+        <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <circle cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.2" fill="none" opacity=".3"/>
+        <circle cx="108" cy="36" r="3" fill="#EDE2C7" opacity=".3"/>
       </svg>
-      <span class="footer-wordmark">The AI Minimalist</span>
+      <span class="footer-wm">The AI Minimalist</span>
     </div>
-    <ul class="footer-nav" role="list">
-      <li><a href="/about">About</a></li>
-      <li><a href="/methodology">Methodology</a></li>
-      <li><a href="/philosophy">Philosophy</a></li>
-      <li><a href="/work-with-me">Work With Me</a></li>
-      <li><a href="/newsletter">Newsletter</a></li>
-      <li><a href="/insights">Insights</a></li>
-      <li><a href="/resources">Resources</a></li>
-    </ul>
-    <p class="footer-copy">© 2026 The AI Minimalist</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="about.html">About</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="work-with-me.html">Work With Me</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="insights.html">Insights</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+    <span class="footer-copy">© 2026 The AI Minimalist</span>
   </div>
 </footer>
-<script src="/components.js"></script>
+<script src="components.js"></script>
 
 </body>
 </html>

@@ -1,176 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWFF04MYMH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WWFF04MYMH');
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Newsletter | The AI Minimalist</title>
-  <meta name="description" content="One focused AI systems insight every two weeks. No noise, no tool roundups — just frameworks and real stories for business owners who want AI to actually work." />
-  <meta name="robots" content="index, follow" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Newsletter | The AI Minimalist" />
-  <meta property="og:description" content="One focused AI systems insight every two weeks. No noise, no tool roundups — just frameworks and real stories for business owners who want AI to actually work." />
-  <meta property="og:url" content="https://www.theaiminimalist.co/newsletter" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.theaiminimalist.co/og-image.png" />
-  <meta property="og:site_name" content="The AI Minimalist" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://www.theaiminimalist.co/og-image.png" />
-  <meta name="twitter:title" content="Newsletter | The AI Minimalist" />
-  <meta name="twitter:description" content="One focused AI systems insight every two weeks. No noise, no tool roundups — just frameworks and real stories for business owners who want AI to actually work." />
-  <!-- JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "The AI Minimalist",
-        "url": "https://www.theaiminimalist.co",
-        "description": "AI systems consulting for small business owners and operators. We map operations, eliminate AI waste, and implement AI where it actually belongs.",
-        "sameAs": []
-      },
-      {
-        "@type": "Person",
-        "name": "The AI Minimalist",
-        "url": "https://www.theaiminimalist.co",
-        "jobTitle": "AI Systems Consultant",
-        "description": "Industrial engineer and Amazon operations veteran helping small businesses implement AI systems that reduce waste and improve operations."
-      }
-    ]
-  }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WWFF04MYMH');</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The AI Minimalist Newsletter | One Idea. Every Two Weeks.</title>
+  <meta name="description" content="Framework teaching and real stories from the field. One focused AI systems insight every two weeks. Free."/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:title" content="The AI Minimalist Newsletter | One Idea. Every Two Weeks."/>
+  <meta property="og:description" content="Framework teaching and real stories from the field. One focused AI systems insight every two weeks. Free."/>
+  <meta property="og:url" content="https://www.theaiminimalist.co/newsletter"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://www.theaiminimalist.co/og-image.png"/>
+  <meta property="og:site_name" content="The AI Minimalist"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://www.theaiminimalist.co/og-image.png"/>
+  <meta name="twitter:title" content="The AI Minimalist Newsletter | One Idea. Every Two Weeks."/>
+  <meta name="twitter:description" content="Framework teaching and real stories from the field. One focused AI systems insight every two weeks. Free."/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Epilogue:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
-<body class="newsletter-body">
+<body>
 
-<!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <a href="/" class="nav-logo" aria-label="The AI Minimalist — Home">
-    <svg width="60" height="36" viewBox="0 0 120 72" fill="none" aria-hidden="true">
-      <line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/>
-      <circle cx="108" cy="36" r="3" fill="#242424"/>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="The AI Minimalist — Home">
+    <svg class="nav-mark" width="38" height="24" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+      <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <circle class="ring" cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.2" fill="none" opacity=".55"/>
+      <circle class="dot"  cx="108" cy="36" r="3" fill="#EDE2C7" opacity=".55"/>
     </svg>
     <span class="nav-wordmark">The AI Minimalist</span>
   </a>
-  <a href="/work-with-me" class="nav-cta">Book a Call</a>
+  <div class="nav-center nav-links">
+    <a href="about.html">About</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="philosophy.html">Philosophy</a>
+    <a href="newsletter.html" class="active">Newsletter</a>
+    <a href="insights.html">Insights</a>
+  </div>
+  <div class="nav-right">
+    <a href="resources.html" class="nav-ghost">Resources</a>
+    <a href="work-with-me.html" class="nav-cta">Book a Call</a>
+  </div>
   <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MOBILE OVERLAY -->
 <div class="nav-overlay" role="dialog" aria-label="Navigation menu">
   <button class="nav-overlay-close" aria-label="Close menu">Close</button>
-  <a href="/about">About</a>
-  <a href="/methodology">Methodology</a>
-  <a href="/philosophy">Philosophy</a>
-  <a href="/work-with-me">Work With Me</a>
-  <a href="/newsletter">Newsletter</a>
-  <a href="/ai-waste-audit">The Waste Checklist</a>
-  <a href="/insights">Insights</a>
-  <a href="/resources">Resources</a>
+  <a href="about.html">About</a>
+  <a href="methodology.html">Methodology</a>
+  <a href="philosophy.html">Philosophy</a>
+  <a href="work-with-me.html">Work With Me</a>
+  <a href="newsletter.html">Newsletter</a>
+  <a href="diagnostic.html">Free Diagnostic</a>
+  <a href="insights.html">Insights</a>
+  <a href="resources.html">Resources</a>
 </div>
 
-<!-- NEWSLETTER PAGE -->
-<main class="newsletter-page" id="subscribe" aria-labelledby="newsletter-page-headline">
-
-  <!-- Centered Convergence Mark -->
-  <div class="newsletter-mark" aria-hidden="true">
-    <svg width="80" height="48" viewBox="0 0 120 72" fill="none">
-      <line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-      <line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-      <line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-      <circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/>
-      <circle cx="108" cy="36" r="3" fill="#ede2c7"/>
-    </svg>
+<!-- PAGE HERO -->
+<section class="page-hero" aria-labelledby="nl-hl">
+  <div class="wrap page-hero-inner">
+    <span class="page-hero-eyebrow label">The Newsletter</span>
+    <h1 class="page-hero-headline" id="nl-hl">One idea. Every two weeks. No noise.</h1>
+    <p class="page-hero-subhead">Framework teaching and real stories from the field. Not a content digest — one focused insight per send.</p>
   </div>
+</section>
 
-  <span class="section-label" style="color:var(--warm-cream); opacity:0.5; margin-bottom:24px;">The AI Minimalist</span>
+<!-- WHAT TO EXPECT -->
+<section class="section r" aria-labelledby="nl-expect-hl">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <span class="label">What to Expect</span>
+      <h2 class="section-title" id="nl-expect-hl">The kind of email that makes you rethink something.</h2>
+    </div>
+    <div class="step-list">
+      <div class="step-item">
+        <div></div>
+        <div>
+          <div class="step-name">One core idea</div>
+          <p class="step-desc">Each issue is built around a single AI systems concept, explained through a real example. Not a roundup. Not a link list.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div></div>
+        <div>
+          <div class="step-name">From the field</div>
+          <p class="step-desc">Real client situations, real friction points, real placements that worked and ones that didn't. Named without identifying details.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div></div>
+        <div>
+          <div class="step-name">Occasionally: early access</div>
+          <p class="step-desc">New resources, the Diagnostic updates, and open audit slots go to subscribers first.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <h1 class="t-display" id="newsletter-page-headline" style="color:var(--warm-cream); margin-bottom:32px;">One idea. Every two weeks.</h1>
-
-  <p class="t-body" style="color:var(--warm-cream); opacity:0.7; max-width:480px; text-align:center; margin-bottom:0;">Framework teaching and real stories from the field. Not a content digest — one focused insight per send. The kind of email that makes you think, not scroll.</p>
-
-  <!-- What you'll get -->
-  <ul class="newsletter-list" aria-label="What you'll get">
-    <li>
-      <!-- Cleared icon — warm cream -->
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" flex-shrink="0" aria-hidden="true" style="min-width:20px; margin-top:3px;">
-        <circle cx="12" cy="12" r="8" stroke="#ede2c7" stroke-width="1" fill="none"/>
-        <line x1="8" y1="12" x2="11" y2="15" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="11" y1="15" x2="16" y2="9" stroke="#ede2c7" stroke-width="1"/>
-      </svg>
-      One core AI systems idea per email
-    </li>
-    <li>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="min-width:20px; margin-top:3px;">
-        <circle cx="12" cy="12" r="8" stroke="#ede2c7" stroke-width="1" fill="none"/>
-        <line x1="8" y1="12" x2="11" y2="15" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="11" y1="15" x2="16" y2="9" stroke="#ede2c7" stroke-width="1"/>
-      </svg>
-      Real examples from the field — not theory
-    </li>
-    <li>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="min-width:20px; margin-top:3px;">
-        <circle cx="12" cy="12" r="8" stroke="#ede2c7" stroke-width="1" fill="none"/>
-        <line x1="8" y1="12" x2="11" y2="15" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="11" y1="15" x2="16" y2="9" stroke="#ede2c7" stroke-width="1"/>
-      </svg>
-      Occasional early access to new resources and the audit
-    </li>
-  </ul>
-
-  <!-- Newsletter Embed -->
-  <div class="newsletter-form-wrap" style="text-align:center; width:100%; max-width:680px; padding:0 0 8px;">
+<!-- NEWSLETTER EMBED -->
+<section class="section r" aria-label="Subscribe to the newsletter">
+  <div class="wrap-narrow">
     <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
     <iframe
       src="https://subscribe-forms.beehiiv.com/7a5c2262-ab04-41f1-8d16-f8df207b5a6c"
-      class="beehiiv-embed"
       data-test-id="beehiiv-embed"
       frameborder="0"
       scrolling="no"
-      style="width: 1349px; height: 467px; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;">
+      style="width:100%;max-width:680px;height:467px;background-color:transparent;border:none;">
     </iframe>
-    <p class="form-sub form-sub-light" style="text-align:center; margin-top:16px;">Bi-weekly. Unsubscribe anytime. No pitch sequences.</p>
+    <p class="nl-note">Bi-weekly. Free. Unsubscribe anytime.</p>
   </div>
+</section>
 
-</main>
-
-<!-- FOOTER -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <svg width="40" height="24" viewBox="0 0 120 72" fill="none" aria-hidden="true">
-        <line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/>
-        <circle cx="108" cy="36" r="3" fill="#ede2c7"/>
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-logo">
+      <svg width="30" height="18" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+        <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <circle cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.2" fill="none" opacity=".3"/>
+        <circle cx="108" cy="36" r="3" fill="#EDE2C7" opacity=".3"/>
       </svg>
-      <span class="footer-wordmark">The AI Minimalist</span>
+      <span class="footer-wm">The AI Minimalist</span>
     </div>
-    <ul class="footer-nav" role="list">
-      <li><a href="/about">About</a></li>
-      <li><a href="/methodology">Methodology</a></li>
-      <li><a href="/philosophy">Philosophy</a></li>
-      <li><a href="/work-with-me">Work With Me</a></li>
-      <li><a href="/newsletter">Newsletter</a></li>
-    </ul>
-    <p class="footer-copy">© 2026 The AI Minimalist</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="about.html">About</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="work-with-me.html">Work With Me</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="insights.html">Insights</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+    <span class="footer-copy">© 2026 The AI Minimalist</span>
   </div>
 </footer>
 

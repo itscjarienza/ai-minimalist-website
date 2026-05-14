@@ -1,232 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWFF04MYMH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WWFF04MYMH');
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WWFF04MYMH');</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Philosophy | The AI Minimalist</title>
-  <meta name="description" content="AI is a component, not the answer. Explore the thinking behind The AI Minimalist approach to systems-first AI implementation for small businesses." />
-  <meta name="robots" content="index, follow" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Philosophy | The AI Minimalist" />
-  <meta property="og:description" content="AI is a component, not the answer. Explore the thinking behind The AI Minimalist approach to systems-first AI implementation for small businesses." />
-  <meta property="og:url" content="https://www.theaiminimalist.co/philosophy" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.theaiminimalist.co/og-image.png" />
-  <meta property="og:site_name" content="The AI Minimalist" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://www.theaiminimalist.co/og-image.png" />
-  <meta name="twitter:title" content="Philosophy | The AI Minimalist" />
-  <meta name="twitter:description" content="AI is a component, not the answer. Explore the thinking behind The AI Minimalist approach to systems-first AI implementation for small businesses." />
-  <!-- JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "The AI Minimalist",
-        "url": "https://www.theaiminimalist.co",
-        "description": "AI systems consulting for small business owners and operators. We map operations, eliminate AI waste, and implement AI where it actually belongs.",
-        "sameAs": []
-      },
-      {
-        "@type": "Person",
-        "name": "The AI Minimalist",
-        "url": "https://www.theaiminimalist.co",
-        "jobTitle": "AI Systems Consultant",
-        "description": "Industrial engineer and Amazon operations veteran helping small businesses implement AI systems that reduce waste and improve operations."
-      }
-    ]
-  }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="description" content="AI is a component, not the answer. The thinking behind The AI Minimalist's systems-first approach to AI implementation."/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:title" content="Philosophy | The AI Minimalist"/>
+  <meta property="og:description" content="AI is a component, not the answer. The thinking behind The AI Minimalist's systems-first approach to AI implementation."/>
+  <meta property="og:url" content="https://www.theaiminimalist.co/philosophy"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://www.theaiminimalist.co/og-image.png"/>
+  <meta property="og:site_name" content="The AI Minimalist"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://www.theaiminimalist.co/og-image.png"/>
+  <meta name="twitter:title" content="Philosophy | The AI Minimalist"/>
+  <meta name="twitter:description" content="AI is a component, not the answer. The thinking behind The AI Minimalist's systems-first approach to AI implementation."/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Epilogue:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
-<body class="philosophy-body">
+<body>
 
-<!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <a href="/" class="nav-logo" aria-label="The AI Minimalist — Home">
-    <svg width="60" height="36" viewBox="0 0 120 72" fill="none" aria-hidden="true">
-      <line x1="0" y1="16" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <line x1="0" y1="36" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <line x1="0" y1="56" x2="100" y2="36" stroke="#242424" stroke-width="1"/>
-      <circle cx="108" cy="36" r="7" stroke="#242424" stroke-width="1.25" fill="none"/>
-      <circle cx="108" cy="36" r="3" fill="#242424"/>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="The AI Minimalist — Home">
+    <svg class="nav-mark" width="38" height="24" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+      <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <circle class="ring" cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.2" fill="none" opacity=".55"/>
+      <circle class="dot"  cx="108" cy="36" r="3" fill="#EDE2C7" opacity=".55"/>
     </svg>
     <span class="nav-wordmark">The AI Minimalist</span>
   </a>
-  <a href="/work-with-me" class="nav-cta">Book a Call</a>
+  <div class="nav-center nav-links">
+    <a href="about.html">About</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="philosophy.html" class="active">Philosophy</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="insights.html">Insights</a>
+  </div>
+  <div class="nav-right">
+    <a href="resources.html" class="nav-ghost">Resources</a>
+    <a href="work-with-me.html" class="nav-cta">Book a Call</a>
+  </div>
   <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MOBILE OVERLAY -->
 <div class="nav-overlay" role="dialog" aria-label="Navigation menu">
   <button class="nav-overlay-close" aria-label="Close menu">Close</button>
-  <a href="/about">About</a>
-  <a href="/methodology">Methodology</a>
-  <a href="/philosophy">Philosophy</a>
-  <a href="/work-with-me">Work With Me</a>
-  <a href="/newsletter">Newsletter</a>
-  <a href="/ai-waste-audit">The Waste Checklist</a>
-  <a href="/insights">Insights</a>
-  <a href="/resources">Resources</a>
+  <a href="about.html">About</a>
+  <a href="methodology.html">Methodology</a>
+  <a href="philosophy.html">Philosophy</a>
+  <a href="work-with-me.html">Work With Me</a>
+  <a href="newsletter.html">Newsletter</a>
+  <a href="diagnostic.html">Free Diagnostic</a>
+  <a href="insights.html">Insights</a>
+  <a href="resources.html">Resources</a>
 </div>
 
-<!-- HERO -->
-<section class="philosophy-hero" aria-labelledby="philosophy-headline">
-  <div class="philosophy-hero-inner">
-    <span class="section-label belief-label" style="margin-bottom:32px;">The Worldview</span>
-    <h1 class="t-display" id="philosophy-headline" style="color:var(--warm-cream);">AI isn't the answer. It's a component.</h1>
+<!-- PAGE HERO -->
+<section class="page-hero" aria-labelledby="phil-hl">
+  <div class="wrap page-hero-inner">
+    <span class="page-hero-eyebrow label">The Foundation</span>
+    <h1 class="page-hero-headline" id="phil-hl">AI is a component, not an answer.</h1>
+    <p class="page-hero-subhead">The thinking behind The AI Minimalist. Why systems come first, always.</p>
   </div>
 </section>
 
-<!-- BELIEFS SECTION -->
-<section style="padding:0 0 80px;" aria-label="Core beliefs">
-  <div class="container-narrow">
-
-    <!-- Belief 1 -->
-    <div class="belief-section">
-      <span class="belief-label">On AI</span>
-      <h2 class="belief-headline">A prompt is not a system.</h2>
-      <p class="belief-body">Dropping something into ChatGPT isn't building a process. It's improvising one. Improvised processes don't compound. They create technical debt, inconsistent outputs, and the illusion of progress while the real problem sits untouched.</p>
+<!-- FOUR PRINCIPLES -->
+<section class="section r" aria-labelledby="principles-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">The Principles</span>
+      <h2 class="section-title" id="principles-title">Four beliefs that shape every engagement.</h2>
     </div>
+    <ol class="step-list" role="list">
 
-    <!-- Visual break: Simplicity vs Complexity Large, dark colorway -->
-    <div class="philosophy-illo-break" aria-hidden="true">
-      <svg width="440" height="280" viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="0" y1="70" x2="360" y2="140" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="0" y1="140" x2="360" y2="140" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="0" y1="210" x2="360" y2="140" stroke="#ede2c7" stroke-width="1"/>
-        <circle cx="388" cy="140" r="24" stroke="#ede2c7" stroke-width="1.25" fill="none"/>
-        <circle cx="388" cy="140" r="9" fill="#ede2c7"/>
-        <circle cx="0" cy="70" r="5" fill="#ede2c7" opacity=".5"/>
-        <circle cx="0" cy="140" r="5" fill="#ede2c7" opacity=".5"/>
-        <circle cx="0" cy="210" r="5" fill="#ede2c7" opacity=".5"/>
-        <text x="220" y="270" text-anchor="middle" font-family="'Epilogue',sans-serif" font-size="9" fill="#ede2c7" opacity=".3" letter-spacing="3" font-weight="300">AFTER THE AUDIT</text>
-      </svg>
-    </div>
+      <li class="step-item rd1">
+        <span class="step-num" aria-hidden="true">01</span>
+        <div>
+          <p class="step-name">The system precedes the tool.</p>
+          <p class="step-desc">Every AI failure I've seen had the same root cause: a tool was added before the underlying process was understood. AI doesn't fix broken systems. It amplifies them — for better or worse. The map comes before the tool.</p>
+          <p class="step-note">// this is why most AI "experiments" don't stick — they were placed into undefined processes</p>
+        </div>
+      </li>
 
-    <!-- Belief 2 -->
-    <div class="belief-section">
-      <span class="belief-label">On Complexity</span>
-      <h2 class="belief-headline">Complexity is a sign something was never mapped.</h2>
-      <p class="belief-body">The businesses with the most AI tools are usually the most operationally confused. Every new tool adds a layer of complexity the system wasn't designed for. Simplicity is the goal — and simplicity requires a map, not more tools.</p>
-    </div>
+      <li class="step-item rd2">
+        <span class="step-num" aria-hidden="true">02</span>
+        <div>
+          <p class="step-name">Clarity over capability.</p>
+          <p class="step-desc">The question is never "what can AI do?" It's "what does this process need?" Most businesses don't have an AI capability gap. They have a clarity gap — they haven't broken down what they're actually doing step by step. Clarity is the prerequisite.</p>
+          <p class="step-note">// the AI filter only works after the process is clear enough to describe</p>
+        </div>
+      </li>
 
-    <!-- Belief 3 -->
-    <div class="belief-section">
-      <span class="belief-label">On the Founder</span>
-      <h2 class="belief-headline">You don't have an AI problem. You have a systems problem.</h2>
-      <p class="belief-body">The founders who get real results from AI aren't more technical. They're more systematic. They mapped what they had before they touched a tool. That's the lens I teach. It's the lens industrial engineering gave me. It's the only one that works.</p>
-    </div>
+      <li class="step-item rd3">
+        <span class="step-num" aria-hidden="true">03</span>
+        <div>
+          <p class="step-name">One placement, proven, before the next.</p>
+          <p class="step-desc">Tool sprawl is the enemy of systems thinking. The instinct is to add more. The discipline is to validate one placement first — measure the output, verify the system got simpler, then decide if there's a second placement. Stack well, not wide.</p>
+          <p class="step-note">// three well-placed tools outperform twelve poorly-integrated ones</p>
+        </div>
+      </li>
 
-  </div>
-</section>
+      <li class="step-item rd4">
+        <span class="step-num" aria-hidden="true">04</span>
+        <div>
+          <p class="step-name">Removal is a feature.</p>
+          <p class="step-desc">If an AI placement doesn't make the system measurably simpler, it should be removed. This isn't a failure — it's the methodology working. The goal is a leaner operation, not an AI-heavy one. The willingness to pull something out is what makes the system trustworthy.</p>
+          <p class="step-note">// most businesses never audit their AI stack — they just add</p>
+        </div>
+      </li>
 
-<!-- THE THREE PRINCIPLES -->
-<section class="bg-grey" style="padding:96px 0;" aria-labelledby="principles-headline">
-  <div class="container-narrow">
-    <span class="section-label">The Three Principles of AI Minimalism</span>
-    <h2 class="t-heading-md" id="principles-headline" style="margin-bottom:64px;">The framework behind the practice.</h2>
-
-    <div class="belief-section">
-      <h3 class="belief-headline">1. Map before you build.</h3>
-      <p class="belief-body">Every AI implementation that fails does so because the underlying system was never mapped first. You cannot improve a process you don't fully understand. The map comes first — always.</p>
-    </div>
-
-    <div class="belief-section">
-      <h3 class="belief-headline">2. Place, don't spread.</h3>
-      <p class="belief-body">AI placed in one right location creates compounding value. AI spread across every process creates compounding complexity. The goal is precision, not coverage.</p>
-    </div>
-
-    <div class="belief-section" style="border-bottom:none;">
-      <h3 class="belief-headline">3. Simpler is the measure.</h3>
-      <p class="belief-body">If the system didn't get simpler after adding AI, the AI doesn't belong there. Simplicity is the only honest metric for whether an implementation worked.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHY MOST AI IMPLEMENTATIONS FAIL -->
-<section class="bg-dark" style="padding:96px 0;" aria-labelledby="why-fail-headline">
-  <div class="container-narrow">
-    <span class="section-label section-label-dim">Why Most AI Implementations Fail</span>
-    <h2 class="t-heading-md" id="why-fail-headline" style="color:var(--warm-cream); margin-bottom:40px;">The pattern is consistent across small businesses.</h2>
-
-    <ol style="list-style:none; padding:0; margin:0 0 40px;">
-      <li class="t-body" style="color:var(--warm-cream); opacity:0.75; padding:16px 0; border-bottom:1px solid rgba(237,226,199,0.15); display:flex; gap:16px;"><span style="font-weight:500; min-width:24px; color:var(--warm-cream);">1.</span><span>A new AI tool gets attention — a podcast, a newsletter, a peer recommendation</span></li>
-      <li class="t-body" style="color:var(--warm-cream); opacity:0.75; padding:16px 0; border-bottom:1px solid rgba(237,226,199,0.15); display:flex; gap:16px;"><span style="font-weight:500; min-width:24px; color:var(--warm-cream);">2.</span><span>The business owner adds it to an existing workflow</span></li>
-      <li class="t-body" style="color:var(--warm-cream); opacity:0.75; padding:16px 0; border-bottom:1px solid rgba(237,226,199,0.15); display:flex; gap:16px;"><span style="font-weight:500; min-width:24px; color:var(--warm-cream);">3.</span><span>Results are mixed or absent</span></li>
-      <li class="t-body" style="color:var(--warm-cream); opacity:0.75; padding:16px 0; border-bottom:1px solid rgba(237,226,199,0.15); display:flex; gap:16px;"><span style="font-weight:500; min-width:24px; color:var(--warm-cream);">4.</span><span>The tool gets blamed and replaced with another tool</span></li>
-      <li class="t-body" style="color:var(--warm-cream); opacity:0.75; padding:16px 0; display:flex; gap:16px;"><span style="font-weight:500; min-width:24px; color:var(--warm-cream);">5.</span><span>The cycle repeats</span></li>
     </ol>
-
-    <p class="t-body" style="color:var(--warm-cream); opacity:0.75; max-width:600px; margin-bottom:24px;">The tool is almost never the problem. The placement is.</p>
-    <p class="t-body" style="color:var(--warm-cream); opacity:0.75; max-width:600px;">AI added to a broken process doesn't fix the process. It adds a new layer of complexity on top of the existing one. The process has to be mapped and repaired first. Then — and only then — does AI have a place to create real value. This is the insight that The AI Minimalist methodology is built on.</p>
   </div>
 </section>
 
-<!-- WHAT AI MINIMALISM IS NOT -->
-<section class="bg-warm" style="padding:96px 0;" aria-labelledby="not-minimalism-headline">
-  <div class="container-narrow">
-    <span class="section-label">What AI Minimalism Is Not</span>
-    <h2 class="t-heading-md" id="not-minimalism-headline" style="margin-bottom:40px;">Common misconceptions, addressed directly.</h2>
-    <ul style="list-style:none; padding:0; margin:0 0 48px;">
-      <li class="t-body" style="padding:16px 0; border-bottom:1px solid rgba(36,36,36,0.1);">It is not anti-AI. The goal is more AI in the right places, not less AI everywhere.</li>
-      <li class="t-body" style="padding:16px 0; border-bottom:1px solid rgba(36,36,36,0.1);">It is not slow. Mapping a system and placing AI correctly is faster than trial-and-error tool adoption.</li>
-      <li class="t-body" style="padding:16px 0; border-bottom:1px solid rgba(36,36,36,0.1);">It is not only for large businesses. The methodology was specifically designed for small operations — 10 to 50 people — where every hour of inefficiency has a direct cost.</li>
-      <li class="t-body" style="padding:16px 0;">It is not theoretical. Every principle comes from real operations experience managing large teams under resource pressure.</li>
-    </ul>
-    <div style="display:flex; gap:16px; flex-wrap:wrap;">
-      <a href="/methodology" class="btn btn-dark">Read the Methodology</a>
-      <a href="/work-with-me" class="btn btn-dark" style="background:transparent; border:1px solid var(--dark); color:var(--dark);">Apply for the Audit</a>
+<!-- PHILOSOPHY QUOTE -->
+<div class="philosophy r" aria-label="AI Minimalism defined">
+  <svg class="phil-mark-bg" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+    <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1"/>
+    <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1"/>
+    <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1"/>
+    <circle cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.25" fill="none"/>
+    <circle cx="108" cy="36" r="3" fill="#EDE2C7"/>
+  </svg>
+  <div class="wrap">
+    <div class="phil-inner">
+      <div>
+        <p class="phil-left-label">AI Minimalism</p>
+        <p class="phil-left-desc">AI Minimalism isn't a restriction. It's a standard. Use AI where it earns its place. Remove it where it doesn't. Nothing in between.</p>
+      </div>
+      <div>
+        <blockquote class="phil-quote">
+          <em>"You don't need more AI. You need better placement. The difference between the two is a systems audit."</em>
+        </blockquote>
+        <p class="phil-attr">— The AI Minimalist Framework</p>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- NEWSLETTER CTA -->
-<section class="bg-warm" style="padding:96px 0;" aria-labelledby="philosophy-newsletter-headline">
-  <div class="cta-inner" style="max-width:640px; margin:0 auto; padding:0 32px;">
-    <span class="section-label">The Newsletter</span>
-    <h2 class="t-heading-md" id="philosophy-newsletter-headline" style="margin-bottom:16px;">This is what the newsletter is about.</h2>
-    <p class="t-body" style="margin-bottom:40px; max-width:520px;">One idea, bi-weekly. Framework teaching and real stories. No tool lists. Just the thinking that helps founders see their systems more clearly.</p>
-    <a href="/newsletter#subscribe" class="btn btn-dark">Join the Newsletter</a>
+<!-- CTA BAND -->
+<div class="wrap r">
+  <div class="cta-band" aria-labelledby="phil-cta-title">
+    <div class="cta-band-text">
+      <h2 id="phil-cta-title">Ready to apply the framework?</h2>
+      <p>The Methodology page explains the 5 steps in detail. Or book a call to run through your operation directly.</p>
+    </div>
+    <div class="cta-band-actions">
+      <a href="methodology.html" class="btn btn-filled">See the Methodology →</a>
+      <a href="work-with-me.html" class="btn-ghost-link">Book a Call</a>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- FOOTER -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <svg width="40" height="24" viewBox="0 0 120 72" fill="none" aria-hidden="true">
-        <line x1="0" y1="16" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="0" y1="36" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <line x1="0" y1="56" x2="100" y2="36" stroke="#ede2c7" stroke-width="1"/>
-        <circle cx="108" cy="36" r="7" stroke="#ede2c7" stroke-width="1.25" fill="none"/>
-        <circle cx="108" cy="36" r="3" fill="#ede2c7"/>
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-logo">
+      <svg width="30" height="18" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+        <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <circle cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.2" fill="none" opacity=".3"/>
+        <circle cx="108" cy="36" r="3" fill="#EDE2C7" opacity=".3"/>
       </svg>
-      <span class="footer-wordmark">The AI Minimalist</span>
+      <span class="footer-wm">The AI Minimalist</span>
     </div>
-    <ul class="footer-nav" role="list">
-      <li><a href="/about">About</a></li>
-      <li><a href="/methodology">Methodology</a></li>
-      <li><a href="/philosophy">Philosophy</a></li>
-      <li><a href="/work-with-me">Work With Me</a></li>
-      <li><a href="/newsletter">Newsletter</a></li>
-    </ul>
-    <p class="footer-copy">© 2026 The AI Minimalist</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="about.html">About</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="work-with-me.html">Work With Me</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="insights.html">Insights</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+    <span class="footer-copy">© 2026 The AI Minimalist</span>
   </div>
 </footer>
 
