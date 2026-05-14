@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWFF04MYMH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WWFF04MYMH');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Automate Repetitive Business Tasks with AI | The AI Minimalist</title>
+  <meta name="description" content="A practical guide to automating repetitive business tasks with AI — including which tasks to start with, how to map processes, and what results to expect." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="How to Automate Repetitive Business Tasks with AI | The AI Minimalist" />
+  <meta property="og:description" content="A practical guide to automating repetitive business tasks with AI — including which tasks to start with, how to map processes, and what results to expect." />
+  <meta property="og:url" content="https://www.theaiminimalist.co/how-to-automate-repetitive-business-tasks-with-ai" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.theaiminimalist.co/og-image.png" />
+  <meta property="og:site_name" content="The AI Minimalist" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://www.theaiminimalist.co/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "How to Automate Repetitive Business Tasks with AI: A Step-by-Step Guide for Service Teams",
+        "author": {
+          "@type": "Person",
+          "name": "The AI Minimalist"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "The AI Minimalist",
+          "url": "https://www.theaiminimalist.co"
+        },
+        "datePublished": "2026-05-14",
+        "dateModified": "2026-05-14",
+        "url": "https://www.theaiminimalist.co/how-to-automate-repetitive-business-tasks-with-ai",
+        "description": "A practical guide to automating repetitive business tasks with AI — including which tasks to start with, how to map processes, and what results to expect."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What repetitive business tasks can be automated with AI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The highest-ROI targets for service businesses: lead qualification and follow-up sequences, appointment scheduling and reminders, invoice processing and payment follow-up, CRM data entry from calls and emails, customer status updates, and weekly reporting. These tasks share three traits — they're repetitive, rule-based, and have predictable inputs and outputs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the first step to automating business tasks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Process mapping. Before touching any automation tool, document the current workflow step by step — every action, every decision, every handoff. Write down what triggers the task, what happens at each step, and what the final output looks like. This map becomes the blueprint for your automation. Without it, you're guessing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you need coding skills to automate business tasks with AI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Platforms like n8n, Make, and Zapier are built for non-technical users. The most important skill isn't coding — it's the ability to map your workflows clearly. If you can describe every step of a process in plain language, you can build an automation around it. Complex workflows may require light JavaScript, but most business automations don't."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to automate a business task?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Simple automations — a triggered email sequence, a form-to-CRM entry — take a few hours once the process is mapped. More complex workflows with multiple branches can take days to weeks. The process mapping phase typically takes as long as the build itself. Expect 2–4 weeks from mapping to a tested, working automation for most mid-complexity workflows."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the best AI tool for automating business tasks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on your technical comfort, budget, and workflow complexity. n8n is the most flexible option — 400+ integrations, 9,000+ community templates, self-hostable, and AI-native. Make is more beginner-friendly with a visual interface. Zapier is easiest for simple trigger-action tasks but gets expensive at scale. For building serious automation infrastructure, n8n delivers the most capability per dollar."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+<div style="padding-top: 96px;"></div>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="The AI Minimalist — Home">
+    <svg class="nav-mark" width="38" height="24" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+      <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".55"/>
+      <circle class="ring" cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.2" fill="none" opacity=".55"/>
+      <circle class="dot"  cx="108" cy="36" r="3" fill="#EDE2C7" opacity=".55"/>
+    </svg>
+    <span class="nav-wordmark">The AI Minimalist</span>
+  </a>
+  <div class="nav-center nav-links">
+    <a href="about.html">About</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="philosophy.html">Philosophy</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="insights.html">Insights</a>
+  </div>
+  <div class="nav-right">
+    <a href="resources.html" class="nav-ghost">Resources</a>
+    <a href="work-with-me.html" class="nav-cta">Book a Call</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-overlay" role="dialog" aria-label="Navigation menu">
+  <button class="nav-overlay-close" aria-label="Close menu">Close</button>
+  <a href="about.html">About</a>
+  <a href="methodology.html">Methodology</a>
+  <a href="philosophy.html">Philosophy</a>
+  <a href="work-with-me.html">Work With Me</a>
+  <a href="newsletter.html">Newsletter</a>
+  <a href="diagnostic.html">Free Diagnostic</a>
+  <a href="insights.html">Insights</a>
+  <a href="resources.html">Resources</a>
+</div>
+
+<!-- HERO -->
+<section class="bg-dark" style="padding: 96px 0 80px;" aria-labelledby="page-headline">
+  <div class="container">
+    <span class="section-label section-label-dim">AI Workflow Automation</span>
+    <h1 class="t-heading-xl" id="page-headline" style="color: var(--warm-cream); max-width: 760px; margin-top: 20px; margin-bottom: 32px;">How to Automate Repetitive Business Tasks with AI: A Step-by-Step Guide for Service Teams</h1>
+    <p class="t-body" style="color: var(--warm-cream); opacity: 0.8; max-width: 640px; font-size: 18px; line-height: 1.7;">To automate repetitive business tasks with AI, start with process mapping — not a tool. Write down every step of the task: every decision, every handoff, every input and output. Then identify which parts are truly repetitive and rule-based. Once you've done that, platforms like n8n, Make, or Zapier can connect your existing software and handle those steps automatically. Skip the mapping, and you'll build automations that break. Do it in order, and you'll recover time you won't get back any other way.</p>
+  </div>
+</section>
+
+<!-- SECTION 1 -->
+<section style="padding: 96px 0;" aria-labelledby="s1-headline">
+  <div class="container">
+    <span class="section-label">Where to Start</span>
+    <h2 class="t-heading-md" id="s1-headline" style="max-width: 600px; margin-bottom: 40px;">What types of business tasks should you automate first?</h2>
+    <div style="max-width: 680px;">
+      <p class="t-body" style="margin-bottom: 24px;">Not all repetitive work is ready to automate. The tasks worth targeting share three traits: they happen at least 10 times per week, the decisions follow a consistent pattern, and the inputs and outputs are predictable. That filter eliminates a lot of candidates — and it should.</p>
+      <p class="t-body" style="margin-bottom: 24px;">The highest-ROI targets for service businesses consistently fall into the same categories. <strong>Lead follow-up sequences</strong> are the clearest example. A 12-person marketing agency I know was manually sending the same four follow-up emails to every prospect. Two people. Every week. About four hours gone. One n8n workflow replaced it — triggered when a lead submits the contact form, it sequences the emails automatically and updates the CRM. Done.</p>
+      <p class="t-body" style="margin-bottom: 24px;"><strong>Appointment scheduling and reminders</strong> are another clean target. Confirmation emails, 24-hour reminders, rescheduling links — none of these require judgment. <strong>CRM data entry from calls and emails</strong> is where knowledge workers lose the most invisible time. Sales calls generate notes. Someone has to log them. That someone costs $30–$50 an hour. AI can read the transcript and populate the record. <strong>Invoice processing and payment follow-up</strong>, <strong>weekly status reports</strong>, and <strong>customer status updates</strong> round out the list.</p>
+      <p class="t-body">The pattern is consistent: if you've done it the same way more than 50 times, it's a candidate. If you've never written down exactly how you do it, it's not ready yet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — dark bg -->
+<section class="bg-dark" style="padding: 96px 0;" aria-labelledby="s2-headline">
+  <div class="container">
+    <span class="section-label section-label-dim">The Filter</span>
+    <h2 class="t-heading-md" id="s2-headline" style="color: var(--warm-cream); max-width: 600px; margin-bottom: 40px;">How do you identify which tasks are ready to automate?</h2>
+    <div style="max-width: 680px;">
+      <p class="t-body" style="color: var(--warm-cream); opacity: 0.8; margin-bottom: 24px;">Three questions. All three have to be yes.</p>
+      <p class="t-body" style="color: var(--warm-cream); opacity: 0.8; margin-bottom: 16px;"><strong style="color: var(--warm-cream);">Repetitive?</strong> Does this happen 10+ times per week following the same pattern? Not occasionally. Consistently.</p>
+      <p class="t-body" style="color: var(--warm-cream); opacity: 0.8; margin-bottom: 16px;"><strong style="color: var(--warm-cream);">Rule-based?</strong> Can you write out the decision logic in plain language? "If the form is submitted, send email A. If no reply in three days, send email B." If you can't write the rules, there are no rules — there's judgment. And judgment doesn't automate.</p>
+      <p class="t-body" style="color: var(--warm-cream); opacity: 0.8; margin-bottom: 24px;"><strong style="color: var(--warm-cream);">Predictable?</strong> Is the input consistent enough that you know what you're going to receive? Automation breaks when inputs are inconsistent. If every version of this task arrives in a different format, fix that first.</p>
+      <p class="t-body" style="color: var(--warm-cream); opacity: 0.8; margin-bottom: 24px;">One no? That's a judgment call. Judgment calls don't automate well — you'd be building a brittle system that fails the moment an edge case shows up.</p>
+      <p class="t-body" style="color: var(--warm-cream); opacity: 0.8;">The hardest part of this test is being honest about question two. A lot of business owners say their process is rule-based, then spend 20 minutes explaining the exceptions. Too many exceptions means the process isn't ready. Fix the process first. Then automate it. This is why 95% of AI initiatives deliver zero ROI — they automate processes that haven't been cleaned up yet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section style="padding: 96px 0;" aria-labelledby="s3-headline">
+  <div class="container">
+    <span class="section-label">The Blueprint</span>
+    <h2 class="t-heading-md" id="s3-headline" style="max-width: 600px; margin-bottom: 40px;">What is process mapping and why does it come before automation?</h2>
+    <div style="max-width: 680px;">
+      <p class="t-body" style="margin-bottom: 24px;"><a href="/ai-process-mapping-for-small-business" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Process mapping</a> means writing down every step of a task before you open an automation platform. Not a vague summary. Every step. Every decision point. Every handoff between people or systems.</p>
+      <p class="t-body" style="margin-bottom: 24px;">This is the most common mistake I see: jumping straight to the tool. Find n8n, Make, or Zapier, and try to reverse-engineer your process around it. That's backwards. The process map is the blueprint. The automation executes the blueprint.</p>
+      <p class="t-body" style="margin-bottom: 24px;">Here's what happens when you skip it. An 8-person accounting firm wanted to automate client onboarding. They went straight to Zapier, built the sequence, and deployed it. Within two weeks, three clients had received incorrect intake forms because the actual onboarding process had two branches nobody had documented — one for individual clients, one for business entities. They rebuilt the automation from scratch.</p>
+      <p class="t-body" style="margin-bottom: 24px;">They spent three hours building and eight hours fixing. Two hours on a proper process map would have saved six. That math repeats itself constantly.</p>
+      <p class="t-body">Your map doesn't have to be a flowchart. A numbered list works. What triggers the task? What happens at step one? What does step one produce? Who touches step two? Where do decisions get made? What's the final output? Answer those questions and you have a blueprint. Everything after that is just execution.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — warm bg -->
+<section class="bg-warm" style="padding: 96px 0;" aria-labelledby="s4-headline">
+  <div class="container">
+    <span class="section-label">The Build</span>
+    <h2 class="t-heading-md" id="s4-headline" style="max-width: 600px; margin-bottom: 40px;">How do you actually build an AI automation for a business task?</h2>
+    <div style="max-width: 680px;">
+      <p class="t-body" style="margin-bottom: 24px;">Once you've mapped the process and it passes the three-question test, the build is straightforward. Five steps.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 32px;">
+        <div style="display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: flex-start;">
+          <p style="font-family: 'Epilogue', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.4; margin: 0; padding-top: 3px;">01</p>
+          <div>
+            <p class="t-body" style="margin-bottom: 8px;"><strong>Choose your platform.</strong> For most service businesses: n8n if you want flexibility and low ongoing cost, Make if you want a more visual interface, Zapier if the task is a simple two-step trigger-action. For AI-native workflows — ones that read emails, summarize calls, or make decisions — n8n with its AI node is the strongest option.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: flex-start;">
+          <p style="font-family: 'Epilogue', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.4; margin: 0; padding-top: 3px;">02</p>
+          <div>
+            <p class="t-body" style="margin-bottom: 8px;"><strong>Identify the trigger.</strong> What event starts the automation? Form submission. New email in a specific folder. A row added to a spreadsheet. A calendar event created. Pick one. The trigger is the on switch.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: flex-start;">
+          <p style="font-family: 'Epilogue', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.4; margin: 0; padding-top: 3px;">03</p>
+          <div>
+            <p class="t-body" style="margin-bottom: 8px;"><strong>Map the steps as nodes.</strong> Each action in your process map becomes a node in the automation. "Send email" is one node. "Update CRM record" is another. "Wait three days, then check for reply" is another. Your process map is already the blueprint — you're just translating it.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: flex-start;">
+          <p style="font-family: 'Epilogue', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.4; margin: 0; padding-top: 3px;">04</p>
+          <div>
+            <p class="t-body" style="margin-bottom: 8px;"><strong>Test with real data.</strong> Not hypothetical. Run the automation with an actual test case — a real lead, a real invoice, a real appointment. Hypothetical tests catch maybe half the issues. Real data catches the rest.</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: flex-start;">
+          <p style="font-family: 'Epilogue', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.4; margin: 0; padding-top: 3px;">05</p>
+          <div>
+            <p class="t-body"><strong>Monitor the first 10 live runs.</strong> Automations that look perfect in testing break on run 7 because of a data format you didn't account for. Watch the first 10 live executions before calling it done.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="t-body">This is <a href="/what-is-ai-workflow-automation" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">AI workflow automation</a> done correctly — not finding a tool and hoping it fits, but building a system around a mapped process. A prompt isn't a system. A trigger-and-node workflow built from a documented process is.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 -->
+<section style="padding: 96px 0;" aria-labelledby="s5-headline">
+  <div class="container">
+    <span class="section-label">What to Expect</span>
+    <h2 class="t-heading-md" id="s5-headline" style="max-width: 600px; margin-bottom: 40px;">What results can a small service business expect from AI task automation?</h2>
+    <div style="max-width: 680px;">
+      <p class="t-body" style="margin-bottom: 24px;">Realistic expectations matter here. A 5-person team spending 40% of their workweek on automatable tasks — McKinsey's estimate, and it tracks with what I've seen — is losing roughly 800 hours per year. Automate even 30% of that and you recover 240 hours. At a $50/hour blended rate, that's $12,000 returned to productive work annually.</p>
+      <p class="t-body" style="margin-bottom: 24px;">But the higher-impact result often isn't time. It's consistency. A 12-person service agency that automates their follow-up sequence doesn't just save 30+ hours a week — they stop losing deals because someone forgot to send the third email. Consistency is hard to quantify. Revenue lost to dropped follow-ups is not.</p>
+      <p class="t-body" style="margin-bottom: 24px;">Businesses that build proper <a href="/ai-tools-vs-ai-systems-small-business" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">AI systems</a> — not just scattered tools — report saving 15+ hours weekly and cutting operational costs 15–25% over time. But that's after implementation. The ramp-up is real.</p>
+      <p class="t-body" style="margin-bottom: 24px;">Simple automations take a few hours once the process is mapped. Complex multi-branch workflows take days. The process mapping phase typically takes as long as the build itself — plan for it.</p>
+      <p class="t-body">The payback period on a well-built automation is almost always under 90 days. That's not a theoretical claim — that's what happens when you automate the right task in the right way. You don't have an AI problem. You have a systems problem. And these are solvable problems with tools that exist right now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-dark" style="padding: 96px 0;" aria-labelledby="faq-headline">
+  <div class="container">
+    <span class="section-label section-label-dim">FAQ</span>
+    <h2 class="t-heading-md" id="faq-headline" style="color: var(--warm-cream); max-width: 560px; margin-bottom: 56px;">Frequently Asked Questions</h2>
+    <div style="max-width: 720px; display: flex; flex-direction: column; gap: 48px;">
+
+      <div>
+        <h3 style="font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px; color: var(--warm-cream); margin-bottom: 16px;">What repetitive business tasks can be automated with AI?</h3>
+        <p class="t-body" style="color: var(--warm-cream); opacity: 0.75;">The highest-ROI targets for service businesses: lead qualification and follow-up sequences, appointment scheduling and reminders, invoice processing and payment follow-up, CRM data entry from calls and emails, customer status updates, and weekly reporting. These tasks share three traits — they're repetitive, rule-based, and have predictable inputs and outputs. Start there.</p>
+      </div>
+
+      <div>
+        <h3 style="font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px; color: var(--warm-cream); margin-bottom: 16px;">What is the first step to automating business tasks?</h3>
+        <p class="t-body" style="color: var(--warm-cream); opacity: 0.75;">Process mapping. Before touching any automation tool, document the current workflow step by step — every action, every decision, every handoff. Write down what triggers the task, what happens at each step, and what the final output looks like. This map becomes the blueprint for your automation. Without it, you're guessing at what to build.</p>
+      </div>
+
+      <div>
+        <h3 style="font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px; color: var(--warm-cream); margin-bottom: 16px;">Do you need coding skills to automate business tasks with AI?</h3>
+        <p class="t-body" style="color: var(--warm-cream); opacity: 0.75;">No. Platforms like n8n, Make, and Zapier are built for non-technical users. The most important skill isn't coding — it's the ability to map your workflows clearly. If you can describe every step of a process in plain language, you can build an automation around it. More complex workflows may require light JavaScript, but most business automations don't get there.</p>
+      </div>
+
+      <div>
+        <h3 style="font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px; color: var(--warm-cream); margin-bottom: 16px;">How long does it take to automate a business task?</h3>
+        <p class="t-body" style="color: var(--warm-cream); opacity: 0.75;">Simple automations — a triggered email sequence, a form-to-CRM entry — take a few hours once the process is mapped. More complex workflows with multiple branches can take days to weeks. The process mapping phase typically takes as long as the build itself. Expect 2–4 weeks from mapping to a tested, working automation for most mid-complexity workflows.</p>
+      </div>
+
+      <div>
+        <h3 style="font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px; color: var(--warm-cream); margin-bottom: 16px;">What is the best AI tool for automating business tasks?</h3>
+        <p class="t-body" style="color: var(--warm-cream); opacity: 0.75;">It depends on your technical comfort, budget, and workflow complexity. n8n is the most flexible option — 400+ integrations, 9,000+ community templates, self-hostable, and AI-native. Make is more beginner-friendly with a visual interface. Zapier is easiest for simple two-step trigger-action tasks but becomes expensive at scale. For building serious automation infrastructure, n8n delivers the most capability per dollar invested.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NODYSSEUS BRIDGE CTA -->
+<section class="bg-dark" style="padding: 96px 0; border-top: 1px solid rgba(237,226,199,0.1);">
+  <div class="container-narrow" style="text-align: center;">
+    <span class="section-label section-label-dim">Ready to Build</span>
+    <h2 class="t-heading-md" style="color: var(--warm-cream); margin-bottom: 24px;">If you'd rather have someone map your processes and build the automations for you — that's exactly what Nodysseus does.</h2>
+    <p class="t-body" style="color: var(--warm-cream); opacity: 0.7; max-width: 520px; margin: 0 auto 40px;">Nodysseus is an AI systems implementation agency. We map your operation, identify the highest-ROI automation candidates, and build workflows that run in production — not just in demos.</p>
+    <a href="https://nodysseus.co" class="btn btn-cream">Work With Nodysseus →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-logo">
+      <svg width="30" height="18" viewBox="0 0 120 72" fill="none" aria-hidden="true">
+        <line x1="0" y1="16" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="36" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <line x1="0" y1="56" x2="100" y2="36" stroke="#EDE2C7" stroke-width="1" opacity=".3"/>
+        <circle cx="108" cy="36" r="7" stroke="#EDE2C7" stroke-width="1.2" fill="none" opacity=".3"/>
+        <circle cx="108" cy="36" r="3" fill="#EDE2C7" opacity=".3"/>
+      </svg>
+      <span class="footer-wm">The AI Minimalist</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="about.html">About</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="work-with-me.html">Work With Me</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="insights.html">Insights</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+    <span class="footer-copy">© 2026 The AI Minimalist</span>
+  </div>
+</footer>
+
+<script src="/components.js"></script>
+</body>
+</html>
