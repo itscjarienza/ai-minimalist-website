@@ -6,9 +6,19 @@
 function initCursor() {
   if (window.matchMedia('(pointer:coarse)').matches) return;
 
-  const dot = document.getElementById('cur');
-  const ring = document.getElementById('cur-ring');
-  if (!dot || !ring) return;
+  let dot = document.getElementById('cur');
+  let ring = document.getElementById('cur-ring');
+
+  if (!dot) {
+    dot = document.createElement('div');
+    dot.id = 'cur';
+    document.body.prepend(dot);
+  }
+  if (!ring) {
+    ring = document.createElement('div');
+    ring.id = 'cur-ring';
+    document.body.prepend(ring);
+  }
 
   let mx = window.innerWidth / 2, my = window.innerHeight / 2;
   let rx = mx, ry = my;
