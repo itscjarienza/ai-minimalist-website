@@ -57,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 #cur, #cur-ring {
   position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
   transform: translate(-50%,-50%); border-radius: 50%;
+  will-change: transform;
 }
 #cur { width: 5px; height: 5px; background: var(--cream); mix-blend-mode: difference; }
 #cur-ring { width: 22px; height: 22px; border: 1px solid rgba(237,226,199,0.55); z-index: 9998; transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease; }

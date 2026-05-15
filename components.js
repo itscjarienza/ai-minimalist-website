@@ -28,8 +28,8 @@ function initCursor() {
 
   function tick() {
     dot.style.transform = `translate(${mx}px,${my}px)`;
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
+    rx += (mx - rx) * 0.2;
+    ry += (my - ry) * 0.2;
     ring.style.transform = `translate(${rx}px,${ry}px)`;
     raf = requestAnimationFrame(tick);
   }
