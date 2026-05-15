@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.theaiminimalist.co/sitemap.xml
+
+Disallow: /seo-ops

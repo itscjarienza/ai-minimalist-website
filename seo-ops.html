@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SEO Ops — The AI Minimalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Epilogue:wght@300&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0C0C0A;
+  --surface: #141412;
+  --surface-hi: #1C1C19;
+  --border: rgba(237,226,199,0.07);
+  --border-hi: rgba(237,226,199,0.13);
+  --cream: #EDE2C7;
+  --accent: #F0F8BE;
+  --text: rgba(237,226,199,0.80);
+  --muted: rgba(237,226,199,0.38);
+  --dim: rgba(237,226,199,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Epilogue', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.65; min-height: 100vh; }
+
+/* PIN GATE */
+#pin-gate { position: fixed; inset: 0; background: var(--bg); z-index: 100; display: flex; align-items: center; justify-content: center; }
+.pin-wrap { text-align: center; width: 280px; }
+.pin-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; color: var(--cream); margin-bottom: 6px; letter-spacing: -0.01em; line-height: 1.12; }
+.pin-sub { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--muted); margin-bottom: 32px; text-transform: uppercase; }
+#pin-input { width: 100%; background: var(--surface); border: 1px solid var(--border-hi); color: var(--cream); font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 22px; letter-spacing: 0.4em; text-align: center; padding: 14px 24px; outline: none; display: block; }
+#pin-input:focus { border-color: rgba(237,226,199,0.35); }
+#pin-error { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--accent); margin-top: 10px; text-transform: uppercase; visibility: hidden; }
+
+/* LAYOUT */
+#dashboard { display: none; }
+.page-header { padding: 64px 80px 48px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.page-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(28px,3.2vw,46px); color: var(--cream); letter-spacing: -0.01em; line-height: 1.12; }
+.page-meta { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; text-align: right; line-height: 1.8; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; background: var(--border); gap: 1px; }
+.grid-full { grid-column: 1 / -1; }
+.panel { background: var(--bg); padding: 48px; }
+.panel-label { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; margin-bottom: 20px; }
+
+.stat-big { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(40px,5vw,72px); color: var(--cream); line-height: 0.98; letter-spacing: -0.02em; }
+.stat-label { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; margin-top: 10px; }
+.stat-ok { color: var(--accent); }
+.stat-fail { color: rgba(237,120,120,0.75); }
+.build-note { margin-top: 18px; font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+.stats-row { display: flex; gap: 48px; flex-wrap: wrap; }
+.stat-sm { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(28px,3vw,42px); color: var(--cream); line-height: 0.98; letter-spacing: -0.02em; }
+
+/* TABLE */
+table { width: 100%; border-collapse: collapse; }
+thead th { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; padding: 0 24px 12px 0; text-align: left; border-bottom: 1px solid var(--border-hi); }
+thead th:last-child { padding-right: 0; }
+tbody td { font-size: 13px; font-weight: 300; color: var(--text); padding: 12px 24px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody td:last-child { padding-right: 0; }
+.mono-sm { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 10px; letter-spacing: 0.16em; color: var(--muted); }
+.tag { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; padding: 2px 8px; color: var(--bg); background: var(--accent); display: inline-block; }
+.tag-dim { background: var(--surface-hi); color: var(--muted); }
+
+/* LOG */
+.log-entry { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 10px; letter-spacing: 0.12em; padding: 10px 0; border-bottom: 1px solid var(--border); line-height: 1.7; display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+.log-ts { color: var(--dim); white-space: nowrap; }
+.log-ok { color: var(--accent); }
+.log-skip { color: var(--dim); }
+.log-fail { color: rgba(237,120,120,0.75); }
+
+/* ARTICLE LIST */
+.article-list { list-style: none; }
+.article-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 16px; }
+.article-list a { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 10px; letter-spacing: 0.16em; color: var(--text); text-decoration: none; }
+.article-list a:hover { color: var(--cream); }
+.article-list .date { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--dim); white-space: nowrap; flex-shrink: 0; }
+
+/* REFRESH */
+.cmd-row { background: var(--surface); border: 1px solid var(--border-hi); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 16px; }
+.cmd-code { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 10px; letter-spacing: 0.16em; color: var(--muted); }
+.copy-btn { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; background: var(--cream); color: var(--bg); border: none; padding: 9px 18px; cursor: pointer; flex-shrink: 0; }
+.copy-btn:hover { background: var(--accent); }
+.refresh-note { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .page-header { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+  .page-meta { text-align: left; }
+  .panel { padding: 24px; }
+  .stats-row { gap: 24px; }
+  .cmd-row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div id="pin-gate">
+  <div class="pin-wrap">
+    <div class="pin-title">SEO Ops</div>
+    <div class="pin-sub">The AI Minimalist</div>
+    <input type="password" id="pin-input" placeholder="· · · ·" maxlength="8" autocomplete="off">
+    <div id="pin-error">Incorrect PIN</div>
+  </div>
+</div>
+
+<div id="dashboard">
+  <header class="page-header">
+    <div class="page-title">SEO Ops</div>
+    <div class="page-meta">
+      theaiminimalist.co<br>
+      Updated 2026-05-15 11:36 CDT
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <div class="panel">
+      <div class="panel-label">Last Run</div>
+      <div class="stat-big stat-ok">&#10003;</div>
+      <div class="stat-label">2026-05-15 10:50:03</div>
+      <div class="build-note">Built: <span class='mono-sm'>/ai-for-small-business-marketing-2</span></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-label">Queue</div>
+      <div class="stat-big">2</div>
+      <div class="stat-label">Articles pending</div>
+    </div>
+
+    <div class="panel grid-full">
+      <div class="panel-label">Upcoming Articles</div>
+      <table><thead><tr><th>Day</th><th>Title</th><th>Pillar</th><th>Type</th><th>Slug</th></tr></thead><tbody><tr><td>Saturday</td><td style='font-weight:300'></td><td class='mono-sm' style='color:var(--muted)'></td><td><span class='tag tag-dim'>n8n-automation-small-business||AI Tools for SMBs||keyword</span></td><td class='mono-sm'>/n8n for Small Business: Real Use Cases, What It Costs, and How to Get Started</td></tr><tr><td>Sunday</td><td style='font-weight:300'></td><td class='mono-sm' style='color:var(--muted)'></td><td><span class='tag tag-dim'>ai-for-hvac-trades-businesses||AI for Small Business||keyword</span></td><td class='mono-sm'>/AI for HVAC and Trades Businesses: What&#x27;s Actually Working in 2026</td></tr></tbody></table>
+    </div>
+
+    <div class="panel grid-full">
+      <div class="panel-label">Recent Runs</div>
+      <div class='log-entry'><span class='log-ts'>2026-05-15 10:50:03</span><span class='log-sep'></span><span class='log-ok'>OK</span> &nbsp;&middot;&nbsp; <a href='https://www.theaiminimalist.co/ai-for-small-business-marketing-2' target='_blank' style='color:var(--muted);text-decoration:none;'>/ai-for-small-business-marketing-2</a></div><div class='log-entry'><span class='log-ts'>2026-05-15 07:03:22</span><span class='log-sep'></span><span class='log-fail'>FAIL</span></div><div class='log-entry'><span class='log-ts'>2026-05-14 10:29:59</span><span class='log-sep'></span><span class='log-ok'>OK</span> &nbsp;&middot;&nbsp; <a href='https://www.theaiminimalist.co/how-to-automate-repetitive-business-tasks-with-ai' target='_blank' style='color:var(--muted);text-decoration:none;'>/how-to-automate-repetitive-business-tasks-with-ai</a></div><div class='log-entry'><span class='log-ts'>2026-05-14 10:29:27</span><span class='log-sep'></span><span class='log-skip'>SKIP</span></div><div class='log-entry'><span class='log-ts'>2026-05-14 07:02:33</span><span class='log-sep'></span><span class='log-skip'>SKIP</span></div>
+    </div>
+
+    <div class="panel grid-full">
+      <div class="panel-label">14 Articles Built</div>
+      <ul class="article-list">
+        <li><a href='https://www.theaiminimalist.co/ai-for-small-business-marketing-2' target='_blank'>/ai-for-small-business-marketing-2</a><span class='date'>2026-05-15</span></li><li><a href='https://www.theaiminimalist.co/how-to-automate-repetitive-business-tasks-with-ai' target='_blank'>/how-to-automate-repetitive-business-tasks-with-ai</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/what-is-ai-workflow-automation' target='_blank'>/what-is-ai-workflow-automation</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/what-does-an-ai-implementation-consultant-actually-do' target='_blank'>/what-does-an-ai-implementation-consultant-actually-do</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/is-ai-worth-it-for-small-businesses' target='_blank'>/is-ai-worth-it-for-small-businesses</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-workflow-automation' target='_blank'>/ai-workflow-automation</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-tools-vs-ai-systems-small-business' target='_blank'>/ai-tools-vs-ai-systems-small-business</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-tools-vs-ai-systems-small-business-2' target='_blank'>/ai-tools-vs-ai-systems-small-business-2</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-systems-consultant-small-business' target='_blank'>/ai-systems-consultant-small-business</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-process-mapping-for-small-business' target='_blank'>/ai-process-mapping-for-small-business</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-implementation' target='_blank'>/ai-implementation</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-implementation-checklist-small-business' target='_blank'>/ai-implementation-checklist-small-business</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-for-small-business-marketing' target='_blank'>/ai-for-small-business-marketing</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-consultant-for-small-business' target='_blank'>/ai-consultant-for-small-business</a><span class='date'>2026-05-14</span></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="panel-label">Reports</div>
+      <div class="stats-row">
+        <div>
+          <div class="stat-sm">6</div>
+          <div class="stat-label">Processed</div>
+        </div>
+        <div>
+          <div class="stat-sm">0</div>
+          <div class="stat-label">Incoming</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-label">Podcast KB</div>
+      <div class="stats-row">
+        <div>
+          <div class="stat-sm">2</div>
+          <div class="stat-label">Prep files</div>
+        </div>
+        <div>
+          <div class="stat-sm">2</div>
+          <div class="stat-label">Briefs</div>
+        </div>
+        <div>
+          <div class="stat-sm">0</div>
+          <div class="stat-label">Transcripts</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel grid-full">
+      <div class="panel-label">Manual Refresh</div>
+      <p class="refresh-note">Regenerate this dashboard without running the full pipeline. Run the command below in your terminal &mdash; or double-click <span class="mono-sm">~/Desktop/seo-refresh.command</span> in Finder.</p>
+      <div class="cmd-row">
+        <span class="cmd-code">~/.local/bin/generate-seo-dashboard.sh</span>
+        <button class="copy-btn" id="copy-btn">Copy</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var P = '2626';
+  if (sessionStorage.getItem('seo-ops') === '1') { show(); return; }
+  var inp = document.getElementById('pin-input');
+  var err = document.getElementById('pin-error');
+  inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') check(); });
+  function check() {
+    if (inp.value === P) { sessionStorage.setItem('seo-ops','1'); show(); }
+    else { err.style.visibility = 'visible'; inp.value = ''; inp.focus(); }
+  }
+  function show() {
+    document.getElementById('pin-gate').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+  }
+})();
+document.getElementById('copy-btn').addEventListener('click', function() {
+  var btn = this;
+  navigator.clipboard.writeText('~/.local/bin/generate-seo-dashboard.sh').then(function() {
+    btn.textContent = 'Copied';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+  });
+});
+</script>
+</body>
+</html>
