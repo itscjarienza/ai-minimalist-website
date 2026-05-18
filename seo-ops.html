@@ -72,10 +72,18 @@ tbody td:last-child { padding-right: 0; }
 
 /* ARTICLE LIST */
 .article-list { list-style: none; }
-.article-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 16px; }
-.article-list a { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 10px; letter-spacing: 0.16em; color: var(--text); text-decoration: none; }
+.article-list li { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 12px; }
+.article-list a { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 10px; letter-spacing: 0.16em; color: var(--text); text-decoration: none; flex: 1; }
 .article-list a:hover { color: var(--cream); }
 .article-list .date { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--dim); white-space: nowrap; flex-shrink: 0; }
+/* Checkbox */
+.check-wrap { display: flex; align-items: center; flex-shrink: 0; cursor: pointer; }
+.check-wrap input[type='checkbox'] { display: none; }
+.check-box { width: 13px; height: 13px; border: 1px solid var(--border-hi); display: inline-block; flex-shrink: 0; position: relative; transition: background 0.1s, border-color 0.1s; }
+.idx-check:checked ~ .check-box { background: var(--accent); border-color: var(--accent); }
+.idx-check:checked ~ .check-box::after { content: ''; display: block; width: 3px; height: 6px; border: 1px solid var(--bg); border-top: none; border-left: none; transform: rotate(45deg); position: absolute; top: 2px; left: 4px; }
+.idx-date { font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 9px; letter-spacing: 0.22em; color: var(--accent); white-space: nowrap; flex-shrink: 0; min-width: 80px; }
+li.idx-done a { color: var(--muted); }
 
 /* REFRESH */
 .cmd-row { background: var(--surface); border: 1px solid var(--border-hi); padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 16px; }
@@ -110,7 +118,7 @@ tbody td:last-child { padding-right: 0; }
     <div class="page-title">SEO Ops</div>
     <div class="page-meta">
       theaiminimalist.co<br>
-      Updated 2026-05-18 07:08 CDT
+      Updated 2026-05-18 08:51 CDT
     </div>
   </header>
 
@@ -140,9 +148,9 @@ tbody td:last-child { padding-right: 0; }
     </div>
 
     <div class="panel grid-full">
-      <div class="panel-label">17 Articles Built</div>
+      <div class="panel-label" id="articles-label">17 Articles Built</div>
       <ul class="article-list">
-        <li><a href='https://www.theaiminimalist.co/how-ai-helps-small-businesses' target='_blank'>/how-ai-helps-small-businesses</a><span class='date'>2026-05-18</span></li><li><a href='https://www.theaiminimalist.co/ai-for-hvac-trades-businesses' target='_blank'>/ai-for-hvac-trades-businesses</a><span class='date'>2026-05-17</span></li><li><a href='https://www.theaiminimalist.co/n8n-automation-small-business' target='_blank'>/n8n-automation-small-business</a><span class='date'>2026-05-16</span></li><li><a href='https://www.theaiminimalist.co/ai-for-small-business-marketing-2' target='_blank'>/ai-for-small-business-marketing-2</a><span class='date'>2026-05-15</span></li><li><a href='https://www.theaiminimalist.co/how-to-automate-repetitive-business-tasks-with-ai' target='_blank'>/how-to-automate-repetitive-business-tasks-with-ai</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/what-is-ai-workflow-automation' target='_blank'>/what-is-ai-workflow-automation</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/what-does-an-ai-implementation-consultant-actually-do' target='_blank'>/what-does-an-ai-implementation-consultant-actually-do</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/is-ai-worth-it-for-small-businesses' target='_blank'>/is-ai-worth-it-for-small-businesses</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-workflow-automation' target='_blank'>/ai-workflow-automation</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-tools-vs-ai-systems-small-business' target='_blank'>/ai-tools-vs-ai-systems-small-business</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-tools-vs-ai-systems-small-business-2' target='_blank'>/ai-tools-vs-ai-systems-small-business-2</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-systems-consultant-small-business' target='_blank'>/ai-systems-consultant-small-business</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-process-mapping-for-small-business' target='_blank'>/ai-process-mapping-for-small-business</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-implementation' target='_blank'>/ai-implementation</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-implementation-checklist-small-business' target='_blank'>/ai-implementation-checklist-small-business</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-for-small-business-marketing' target='_blank'>/ai-for-small-business-marketing</a><span class='date'>2026-05-14</span></li><li><a href='https://www.theaiminimalist.co/ai-consultant-for-small-business' target='_blank'>/ai-consultant-for-small-business</a><span class='date'>2026-05-14</span></li>
+        <li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='what-is-ai-workflow-automation'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/what-is-ai-workflow-automation' target='_blank'>/what-is-ai-workflow-automation</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='what-does-an-ai-implementation-consultant-actually-do'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/what-does-an-ai-implementation-consultant-actually-do' target='_blank'>/what-does-an-ai-implementation-consultant-actually-do</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='n8n-automation-small-business'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/n8n-automation-small-business' target='_blank'>/n8n-automation-small-business</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='is-ai-worth-it-for-small-businesses'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/is-ai-worth-it-for-small-businesses' target='_blank'>/is-ai-worth-it-for-small-businesses</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='how-to-automate-repetitive-business-tasks-with-ai'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/how-to-automate-repetitive-business-tasks-with-ai' target='_blank'>/how-to-automate-repetitive-business-tasks-with-ai</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='how-ai-helps-small-businesses'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/how-ai-helps-small-businesses' target='_blank'>/how-ai-helps-small-businesses</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-workflow-automation'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-workflow-automation' target='_blank'>/ai-workflow-automation</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-tools-vs-ai-systems-small-business'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-tools-vs-ai-systems-small-business' target='_blank'>/ai-tools-vs-ai-systems-small-business</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-tools-vs-ai-systems-small-business-2'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-tools-vs-ai-systems-small-business-2' target='_blank'>/ai-tools-vs-ai-systems-small-business-2</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-systems-consultant-small-business'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-systems-consultant-small-business' target='_blank'>/ai-systems-consultant-small-business</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-process-mapping-for-small-business'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-process-mapping-for-small-business' target='_blank'>/ai-process-mapping-for-small-business</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-implementation'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-implementation' target='_blank'>/ai-implementation</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-implementation-checklist-small-business'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-implementation-checklist-small-business' target='_blank'>/ai-implementation-checklist-small-business</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-for-small-business-marketing'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-for-small-business-marketing' target='_blank'>/ai-for-small-business-marketing</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-for-small-business-marketing-2'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-for-small-business-marketing-2' target='_blank'>/ai-for-small-business-marketing-2</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-for-hvac-trades-businesses'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-for-hvac-trades-businesses' target='_blank'>/ai-for-hvac-trades-businesses</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li><li><label class='check-wrap'><input type='checkbox' class='idx-check' data-slug='ai-consultant-for-small-business'><span class='check-box'></span></label><a href='https://www.theaiminimalist.co/ai-consultant-for-small-business' target='_blank'>/ai-consultant-for-small-business</a><span class='idx-date'></span><span class='date'>2026-05-18</span></li>
       </ul>
     </div>
 
@@ -213,6 +221,50 @@ document.getElementById('copy-btn').addEventListener('click', function() {
     setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
   });
 });
+// Index request tracking
+(function() {
+  var KEY = 'seo-idx';
+  function getIdx() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) { return {}; } }
+  function saveIdx(d) { localStorage.setItem(KEY, JSON.stringify(d)); }
+  function updateLabel() {
+    var total = document.querySelectorAll('.idx-check').length;
+    var done = document.querySelectorAll('.idx-check:checked').length;
+    var lbl = document.getElementById('articles-label');
+    if (lbl) lbl.textContent = total + ' Articles Built' + (done > 0 ? ' · ' + done + '/' + total + ' Index Requested' : '');
+  }
+  function restore() {
+    var data = getIdx();
+    document.querySelectorAll('.idx-check').forEach(function(cb) {
+      var slug = cb.dataset.slug;
+      if (data[slug]) {
+        cb.checked = true;
+        cb.closest('li').classList.add('idx-done');
+        cb.closest('li').querySelector('.idx-date').textContent = data[slug];
+      }
+    });
+    updateLabel();
+  }
+  document.querySelectorAll('.idx-check').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      var data = getIdx();
+      var slug = this.dataset.slug;
+      var li = this.closest('li');
+      if (this.checked) {
+        var today = new Date().toISOString().slice(0,10);
+        data[slug] = today;
+        li.classList.add('idx-done');
+        li.querySelector('.idx-date').textContent = today;
+      } else {
+        delete data[slug];
+        li.classList.remove('idx-done');
+        li.querySelector('.idx-date').textContent = '';
+      }
+      saveIdx(data);
+      updateLabel();
+    });
+  });
+  restore();
+})();
 </script>
 </body>
 </html>
