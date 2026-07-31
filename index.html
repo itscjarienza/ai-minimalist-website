@@ -150,21 +150,39 @@
           <div class="dash-live"><div class="live-dot"></div><span>Live</span></div>
         </div>
 
-        <!-- Convergence mark, drawn in -->
+        <!-- Animated pipeline: Input → Process → AI Node → Output → Placed -->
         <div class="pipeline-wrap">
           <svg class="pipeline-svg" viewBox="0 0 420 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line stroke="#EDE2C7" stroke-width="1" x1="70" y1="24" x2="330" y2="40"
-              style="stroke-dasharray:264;stroke-dashoffset:264;animation:draw-in .6s ease both .3s"/>
-            <line stroke="#EDE2C7" stroke-width="1" x1="70" y1="45" x2="330" y2="45"
-              style="stroke-dasharray:260;stroke-dashoffset:260;animation:draw-in .6s ease both .6s"/>
-            <line stroke="#EDE2C7" stroke-width="1" x1="70" y1="66" x2="330" y2="50"
-              style="stroke-dasharray:264;stroke-dashoffset:264;animation:draw-in .6s ease both .9s"/>
-            <circle stroke="#EDE2C7" stroke-width="1.2" fill="none" cx="356" cy="45" r="22"
-              style="stroke-dasharray:138;stroke-dashoffset:138;animation:draw-in .7s ease both 1.4s"/>
-            <circle cx="356" cy="45" r="7" fill="#EDE2C7"
-              style="transform-origin:356px 45px;animation:dot-settle .35s ease both 1.9s, dot-breathe 2.4s ease-in-out infinite 2.3s"/>
-            <text x="70"  y="82" text-anchor="middle" class="pipeline-label">Signal</text>
-            <text x="356" y="82" text-anchor="middle" class="pipeline-label">Clarity</text>
+            <circle stroke="#EDE2C7" stroke-width="1" fill="none" cx="24" cy="45" r="12"
+              style="stroke-dasharray:76;stroke-dashoffset:76;animation:draw-in .4s ease both .3s"/>
+            <line stroke="#EDE2C7" stroke-width="1" x1="36" y1="45" x2="78" y2="45"
+              style="stroke-dasharray:42;stroke-dashoffset:42;animation:draw-in .3s ease both .7s"/>
+            <rect stroke="#EDE2C7" stroke-width="1" fill="none" x="78" y="25" width="44" height="40"
+              style="stroke-dasharray:168;stroke-dashoffset:168;animation:draw-in .5s ease both 1.0s"/>
+            <circle stroke="#EDE2C7" stroke-width="1" fill="none" opacity=".3" cx="100" cy="45" r="30"
+              style="stroke-dasharray:6 4;stroke-dashoffset:188;animation:draw-in .8s ease both 1.5s"/>
+            <line stroke="#EDE2C7" stroke-width="1" x1="122" y1="45" x2="156" y2="45"
+              style="stroke-dasharray:34;stroke-dashoffset:34;animation:draw-in .25s ease both 1.6s"/>
+            <circle stroke="#EDE2C7" stroke-width="1.2" fill="none" cx="182" cy="45" r="26"
+              style="stroke-dasharray:163;stroke-dashoffset:163;animation:draw-in .7s ease both 1.9s"/>
+            <text x="182" y="50" text-anchor="middle" class="pipeline-label" font-size="9"
+              style="opacity:0;animation:fadeIn .4s ease both 2.6s">AI</text>
+            <line stroke="#EDE2C7" stroke-width="1" x1="208" y1="45" x2="246" y2="45"
+              style="stroke-dasharray:38;stroke-dashoffset:38;animation:draw-in .28s ease both 2.7s"/>
+            <rect stroke="#EDE2C7" stroke-width="1" fill="none" x="246" y="25" width="44" height="40"
+              style="stroke-dasharray:168;stroke-dashoffset:168;animation:draw-in .5s ease both 3.0s"/>
+            <line stroke="#EDE2C7" stroke-width="1" x1="290" y1="45" x2="350" y2="45"
+              style="stroke-dasharray:60;stroke-dashoffset:60;animation:draw-in .4s ease both 3.5s"/>
+            <circle stroke="#EDE2C7" stroke-width="1" fill="none" cx="374" cy="45" r="14"
+              style="stroke-dasharray:88;stroke-dashoffset:88;animation:draw-in .4s ease both 3.9s"/>
+            <!-- Placed dot — settles then breathes continuously -->
+            <circle cx="374" cy="45" r="5" fill="#EDE2C7"
+              style="transform-origin:374px 45px;animation:dot-settle .35s ease both 3.8s, dot-breathe 2.4s ease-in-out infinite 4.4s"/>
+            <text x="24"  y="72" text-anchor="middle" class="pipeline-label">Signal</text>
+            <text x="100" y="78" text-anchor="middle" class="pipeline-label">Process</text>
+            <text x="182" y="83" text-anchor="middle" class="pipeline-label">AI Node</text>
+            <text x="268" y="78" text-anchor="middle" class="pipeline-label">Clarity</text>
+            <text x="374" y="72" text-anchor="middle" class="pipeline-label">Placed</text>
           </svg>
         </div>
 
